@@ -7,6 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */; };
+		1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */; };
+		1C3A8CA9163D4FE100C893CA /* WordExplain+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */; };
+		1C3A8CAA163D4FE100C893CA /* WordExplain+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */; };
+		1C3A8CAB163D4FE100C893CA /* WordEntity+Creat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */; };
+		1C3A8CAC163D4FE100C893CA /* WordEntity+Creat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */; };
+		1C3A8CAD163D4FE100C893CA /* WordSampleSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */; };
+		1C3A8CAE163D4FE100C893CA /* WordSampleSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */; };
+		1C3A8CAF163D4FE100C893CA /* WordExplain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C9E163D4FE100C893CA /* WordExplain.m */; };
+		1C3A8CB0163D4FE100C893CA /* WordExplain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C9E163D4FE100C893CA /* WordExplain.m */; };
+		1C3A8CB1163D4FE100C893CA /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CA0163D4FE100C893CA /* WordEntity.m */; };
+		1C3A8CB2163D4FE100C893CA /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CA0163D4FE100C893CA /* WordEntity.m */; };
+		1C3A8CB3163D4FE100C893CA /* LookUpHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CA2163D4FE100C893CA /* LookUpHistory.m */; };
+		1C3A8CB4163D4FE100C893CA /* LookUpHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CA2163D4FE100C893CA /* LookUpHistory.m */; };
+		1C3A8CB5163D4FE100C893CA /* NewWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CA4163D4FE100C893CA /* NewWord.m */; };
+		1C3A8CB6163D4FE100C893CA /* NewWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CA4163D4FE100C893CA /* NewWord.m */; };
+		1C3A8CB8163D506B00C893CA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C3A8CB7163D506B00C893CA /* CoreData.framework */; };
+		1C3A8CC3163D510E00C893CA /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CBC163D510E00C893CA /* DDFileLogger.m */; };
+		1C3A8CC4163D510E00C893CA /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CBC163D510E00C893CA /* DDFileLogger.m */; };
+		1C3A8CC5163D510E00C893CA /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CBE163D510E00C893CA /* DDASLLogger.m */; };
+		1C3A8CC6163D510E00C893CA /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CBE163D510E00C893CA /* DDASLLogger.m */; };
+		1C3A8CC7163D510E00C893CA /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CC0163D510E00C893CA /* DDLog.m */; };
+		1C3A8CC8163D510E00C893CA /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CC0163D510E00C893CA /* DDLog.m */; };
+		1C3A8CC9163D510E00C893CA /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CC2163D510E00C893CA /* DDTTYLogger.m */; };
+		1C3A8CCA163D510E00C893CA /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8CC2163D510E00C893CA /* DDTTYLogger.m */; };
+		1C3A8D8B163D953A00C893CA /* YAD.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1C3A8D8A163D953A00C893CA /* YAD.sqlite */; };
+		1C3A8D8C163D953A00C893CA /* YAD.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1C3A8D8A163D953A00C893CA /* YAD.sqlite */; };
+		1C3A8D93163DA42600C893CA /* YADMD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8D91163DA42600C893CA /* YADMD.xcdatamodeld */; };
+		1C3A8D94163DA42600C893CA /* YADMD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8D91163DA42600C893CA /* YADMD.xcdatamodeld */; };
 		1CEF6FB4163C19DE00D31F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB3163C19DE00D31F32 /* UIKit.framework */; };
 		1CEF6FB6163C19DE00D31F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB5163C19DE00D31F32 /* Foundation.framework */; };
 		1CEF6FB8163C19DE00D31F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB7163C19DE00D31F32 /* CoreGraphics.framework */; };
@@ -36,6 +65,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C3A8C94163D4FE100C893CA /* WordSampleSentence+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordSampleSentence+Create.h"; sourceTree = "<group>"; };
+		1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordSampleSentence+Create.m"; sourceTree = "<group>"; };
+		1C3A8C96163D4FE100C893CA /* WordExplain+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordExplain+Create.h"; sourceTree = "<group>"; };
+		1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordExplain+Create.m"; sourceTree = "<group>"; };
+		1C3A8C98163D4FE100C893CA /* WordEntity+Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordEntity+Creat.h"; sourceTree = "<group>"; };
+		1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordEntity+Creat.m"; sourceTree = "<group>"; };
+		1C3A8C9A163D4FE100C893CA /* ClassNameAndDicConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassNameAndDicConst.h; sourceTree = "<group>"; };
+		1C3A8C9B163D4FE100C893CA /* WordSampleSentence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSampleSentence.h; sourceTree = "<group>"; };
+		1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSampleSentence.m; sourceTree = "<group>"; };
+		1C3A8C9D163D4FE100C893CA /* WordExplain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordExplain.h; sourceTree = "<group>"; };
+		1C3A8C9E163D4FE100C893CA /* WordExplain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordExplain.m; sourceTree = "<group>"; };
+		1C3A8C9F163D4FE100C893CA /* WordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEntity.h; sourceTree = "<group>"; };
+		1C3A8CA0163D4FE100C893CA /* WordEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordEntity.m; sourceTree = "<group>"; };
+		1C3A8CA1163D4FE100C893CA /* LookUpHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookUpHistory.h; sourceTree = "<group>"; };
+		1C3A8CA2163D4FE100C893CA /* LookUpHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookUpHistory.m; sourceTree = "<group>"; };
+		1C3A8CA3163D4FE100C893CA /* NewWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWord.h; sourceTree = "<group>"; };
+		1C3A8CA4163D4FE100C893CA /* NewWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWord.m; sourceTree = "<group>"; };
+		1C3A8CB7163D506B00C893CA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1C3A8CBB163D510E00C893CA /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		1C3A8CBC163D510E00C893CA /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		1C3A8CBD163D510E00C893CA /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		1C3A8CBE163D510E00C893CA /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		1C3A8CBF163D510E00C893CA /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		1C3A8CC0163D510E00C893CA /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		1C3A8CC1163D510E00C893CA /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		1C3A8CC2163D510E00C893CA /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		1C3A8D8A163D953A00C893CA /* YAD.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = YAD.sqlite; sourceTree = "<group>"; };
+		1C3A8D92163DA42600C893CA /* YADMD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YADMD.xcdatamodel; sourceTree = "<group>"; };
 		1CEF6FAF163C19DE00D31F32 /* YADOI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YADOI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEF6FB3163C19DE00D31F32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1CEF6FB5163C19DE00D31F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C3A8CB8163D506B00C893CA /* CoreData.framework in Frameworks */,
 				1CEF6FB4163C19DE00D31F32 /* UIKit.framework in Frameworks */,
 				1CEF6FB6163C19DE00D31F32 /* Foundation.framework in Frameworks */,
 				1CEF6FB8163C19DE00D31F32 /* CoreGraphics.framework in Frameworks */,
@@ -84,6 +142,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C3A8C91163D4F9700C893CA /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1C3A8D91163DA42600C893CA /* YADMD.xcdatamodeld */,
+				1C3A8D8A163D953A00C893CA /* YAD.sqlite */,
+				1C3A8C94163D4FE100C893CA /* WordSampleSentence+Create.h */,
+				1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */,
+				1C3A8C96163D4FE100C893CA /* WordExplain+Create.h */,
+				1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */,
+				1C3A8C98163D4FE100C893CA /* WordEntity+Creat.h */,
+				1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */,
+				1C3A8C9A163D4FE100C893CA /* ClassNameAndDicConst.h */,
+				1C3A8C9B163D4FE100C893CA /* WordSampleSentence.h */,
+				1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */,
+				1C3A8C9D163D4FE100C893CA /* WordExplain.h */,
+				1C3A8C9E163D4FE100C893CA /* WordExplain.m */,
+				1C3A8C9F163D4FE100C893CA /* WordEntity.h */,
+				1C3A8CA0163D4FE100C893CA /* WordEntity.m */,
+				1C3A8CA1163D4FE100C893CA /* LookUpHistory.h */,
+				1C3A8CA2163D4FE100C893CA /* LookUpHistory.m */,
+				1C3A8CA3163D4FE100C893CA /* NewWord.h */,
+				1C3A8CA4163D4FE100C893CA /* NewWord.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		1C3A8CB9163D50A600C893CA /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				1C3A8CBA163D50F800C893CA /* Log */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		1C3A8CBA163D50F800C893CA /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				1C3A8CBB163D510E00C893CA /* DDFileLogger.h */,
+				1C3A8CBC163D510E00C893CA /* DDFileLogger.m */,
+				1C3A8CBD163D510E00C893CA /* DDASLLogger.h */,
+				1C3A8CBE163D510E00C893CA /* DDASLLogger.m */,
+				1C3A8CBF163D510E00C893CA /* DDLog.h */,
+				1C3A8CC0163D510E00C893CA /* DDLog.m */,
+				1C3A8CC1163D510E00C893CA /* DDTTYLogger.h */,
+				1C3A8CC2163D510E00C893CA /* DDTTYLogger.m */,
+			);
+			name = Log;
+			sourceTree = "<group>";
+		};
 		1CEF6FA4163C19DD00D31F32 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +213,7 @@
 		1CEF6FB2163C19DE00D31F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C3A8CB7163D506B00C893CA /* CoreData.framework */,
 				1CEF6FB3163C19DE00D31F32 /* UIKit.framework */,
 				1CEF6FB5163C19DE00D31F32 /* Foundation.framework */,
 				1CEF6FB7163C19DE00D31F32 /* CoreGraphics.framework */,
@@ -117,12 +225,14 @@
 		1CEF6FB9163C19DE00D31F32 /* YADOI */ = {
 			isa = PBXGroup;
 			children = (
+				1C3A8C91163D4F9700C893CA /* CoreData */,
 				1CEF6FC2163C19DE00D31F32 /* YADAppDelegate.h */,
 				1CEF6FC3163C19DE00D31F32 /* YADAppDelegate.m */,
 				1CEF6FCB163C19DE00D31F32 /* MainStoryboard.storyboard */,
 				1CEF6FCE163C19DE00D31F32 /* YADViewController.h */,
 				1CEF6FCF163C19DE00D31F32 /* YADViewController.m */,
 				1CEF6FBA163C19DE00D31F32 /* Supporting Files */,
+				1C3A8CB9163D50A600C893CA /* Libs */,
 			);
 			path = YADOI;
 			sourceTree = "<group>";
@@ -237,6 +347,7 @@
 				1CEF6FC8163C19DE00D31F32 /* Default@2x.png in Resources */,
 				1CEF6FCA163C19DE00D31F32 /* Default-568h@2x.png in Resources */,
 				1CEF6FCD163C19DE00D31F32 /* MainStoryboard.storyboard in Resources */,
+				1C3A8D8B163D953A00C893CA /* YAD.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CEF6FE2163C19DE00D31F32 /* InfoPlist.strings in Resources */,
+				1C3A8D8C163D953A00C893CA /* YAD.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +386,19 @@
 				1CEF6FC0163C19DE00D31F32 /* main.m in Sources */,
 				1CEF6FC4163C19DE00D31F32 /* YADAppDelegate.m in Sources */,
 				1CEF6FD0163C19DE00D31F32 /* YADViewController.m in Sources */,
+				1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */,
+				1C3A8CA9163D4FE100C893CA /* WordExplain+Create.m in Sources */,
+				1C3A8CAB163D4FE100C893CA /* WordEntity+Creat.m in Sources */,
+				1C3A8CAD163D4FE100C893CA /* WordSampleSentence.m in Sources */,
+				1C3A8CAF163D4FE100C893CA /* WordExplain.m in Sources */,
+				1C3A8CB1163D4FE100C893CA /* WordEntity.m in Sources */,
+				1C3A8CB3163D4FE100C893CA /* LookUpHistory.m in Sources */,
+				1C3A8CB5163D4FE100C893CA /* NewWord.m in Sources */,
+				1C3A8CC3163D510E00C893CA /* DDFileLogger.m in Sources */,
+				1C3A8CC5163D510E00C893CA /* DDASLLogger.m in Sources */,
+				1C3A8CC7163D510E00C893CA /* DDLog.m in Sources */,
+				1C3A8CC9163D510E00C893CA /* DDTTYLogger.m in Sources */,
+				1C3A8D93163DA42600C893CA /* YADMD.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +407,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CEF6FE5163C19DE00D31F32 /* YADOITests.m in Sources */,
+				1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */,
+				1C3A8CAA163D4FE100C893CA /* WordExplain+Create.m in Sources */,
+				1C3A8CAC163D4FE100C893CA /* WordEntity+Creat.m in Sources */,
+				1C3A8CAE163D4FE100C893CA /* WordSampleSentence.m in Sources */,
+				1C3A8CB0163D4FE100C893CA /* WordExplain.m in Sources */,
+				1C3A8CB2163D4FE100C893CA /* WordEntity.m in Sources */,
+				1C3A8CB4163D4FE100C893CA /* LookUpHistory.m in Sources */,
+				1C3A8CB6163D4FE100C893CA /* NewWord.m in Sources */,
+				1C3A8CC4163D510E00C893CA /* DDFileLogger.m in Sources */,
+				1C3A8CC6163D510E00C893CA /* DDASLLogger.m in Sources */,
+				1C3A8CC8163D510E00C893CA /* DDLog.m in Sources */,
+				1C3A8CCA163D510E00C893CA /* DDTTYLogger.m in Sources */,
+				1C3A8D94163DA42600C893CA /* YADMD.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -367,6 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -379,6 +519,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YADOI/YADOI-Prefix.pch";
 				INFOPLIST_FILE = "YADOI/YADOI-Info.plist";
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -390,6 +531,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YADOI/YADOI-Prefix.pch";
 				INFOPLIST_FILE = "YADOI/YADOI-Info.plist";
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -448,6 +590,7 @@
 				1CEF6FEA163C19DE00D31F32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1CEF6FEB163C19DE00D31F32 /* Build configuration list for PBXNativeTarget "YADOITests" */ = {
 			isa = XCConfigurationList;
@@ -456,8 +599,22 @@
 				1CEF6FED163C19DE00D31F32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1C3A8D91163DA42600C893CA /* YADMD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1C3A8D92163DA42600C893CA /* YADMD.xcdatamodel */,
+			);
+			currentVersion = 1C3A8D92163DA42600C893CA /* YADMD.xcdatamodel */;
+			path = YADMD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1CEF6FA6163C19DD00D31F32 /* Project object */;
 }

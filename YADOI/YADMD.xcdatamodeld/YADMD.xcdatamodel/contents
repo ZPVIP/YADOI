@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LookUpHistory" representedClassName="LookUpHistory" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="onDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="word" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="WordEntity" syncable="YES"/>
+    </entity>
+    <entity name="NewWord" representedClassName="NewWord" syncable="YES">
+        <attribute name="nextReviewDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="rememberLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="word" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="WordEntity" syncable="YES"/>
+    </entity>
+    <entity name="WordEntity" representedClassName="WordEntity" syncable="YES">
+        <attribute name="phonetic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="spell" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="explains" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordExplain" inverseName="word" inverseEntity="WordExplain" syncable="YES"/>
+        <relationship name="sampleSentences" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WordSampleSentence" inverseName="word" inverseEntity="WordSampleSentence" syncable="YES"/>
+    </entity>
+    <entity name="WordExplain" representedClassName="WordExplain" syncable="YES">
+        <attribute name="explain" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="word" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="WordEntity" inverseName="explains" inverseEntity="WordEntity" syncable="YES"/>
+    </entity>
+    <entity name="WordSampleSentence" representedClassName="WordSampleSentence" syncable="YES">
+        <attribute name="original" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="word" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="WordEntity" inverseName="sampleSentences" inverseEntity="WordEntity" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="LookUpHistory" positionX="223" positionY="396" width="128" height="90"/>
+        <element name="NewWord" positionX="-56" positionY="369" width="128" height="90"/>
+        <element name="WordEntity" positionX="99" positionY="75" width="128" height="105"/>
+        <element name="WordExplain" positionX="349" positionY="81" width="128" height="75"/>
+        <element name="WordSampleSentence" positionX="-117" positionY="81" width="128" height="90"/>
+    </elements>
+</model>

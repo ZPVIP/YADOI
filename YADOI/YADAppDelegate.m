@@ -7,12 +7,26 @@
 //
 
 #import "YADAppDelegate.h"
+#import <CoreData/CoreData.h>
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+#import "DDASLLogger.h"
+#import "WordEntity.h"
+
+const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation YADAppDelegate
+
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self setupDDLog];
+    [self testQuery];
+    [self testInsert];
     return YES;
 }
 							
@@ -41,6 +55,118 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self saveContext];
+}
+
+- (void)setupDDLog
+{
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+}
+
+- (void)testQuery
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"WordEntity"];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"spell" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (error == nil) {
+        DDLogVerbose(@"查询成功 共有条目数 %d", [matches count]);
+    }
+
+}
+
+- (void)testInsert
+{
+    WordEntity *testWord = [NSEntityDescription insertNewObjectForEntityForName:@"WordEntity" inManagedObjectContext:self.managedObjectContext];
+    testWord.spell = @"testststst";
+    [self testQuery];
+    
+    [self.managedObjectContext deleteObject:testWord];
+    [self testQuery];
+}
+
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *context = self.managedObjectContext;
+    if (context != nil) {
+        if ([context hasChanges]) {
+            if (![context save:&error]) {
+                DDLogError(@"保存context时出错，%@ %@", error, [error userInfo]);
+            } else {
+                DDLogVerbose(@"成功保存context");
+            }
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark Core Data Stack
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    
+    return _managedObjectContext;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
+    }
+    // 将 sqlite 从 mainBundle 里拷出来，变成可写的。
+    NSURL *storeURL = [[self applicationDocumentDirectory] URLByAppendingPathComponent:@"YAD.sqlite"];
+    DDLogVerbose(@"storeURL is %@", storeURL);
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
+        DDLogVerbose(@"第一次启动，拷贝数据库");
+        NSURL *preLoadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"YAD" ofType:@"sqlite"]];
+        DDLogVerbose(@"preLoadURL is %@", preLoadURL);
+        
+        NSError *error = nil;
+        if (![[NSFileManager defaultManager] copyItemAtURL:preLoadURL toURL:storeURL error:&error]) {
+            DDLogError(@"从mainBundle 拷贝数据库时出错");
+        } else {
+            DDLogVerbose(@"从 mainBundle 拷贝数据成功");
+        }
+    }
+    
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        // 处理出错的情况，目前暂不处理
+        // 主要有两种情况 1.storeURL 处文件不存在或者不可写 2.Model的版本问题，最简单的解决办法是删了重来，没有多版本。
+        DDLogError(@"不能成功创建 persistentStoreCoordinator %@ %@", error, [error userInfo]);
+    }
+    
+    return _persistentStoreCoordinator;
+}
+
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
+    }
+
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"YADMD" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return _managedObjectModel;
+}
+
+- (NSURL *)applicationDocumentDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end
