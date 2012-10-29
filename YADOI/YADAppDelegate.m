@@ -12,6 +12,7 @@
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 #import "WordEntity.h"
+#import "WordListViewController.h"
 
 const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
@@ -25,8 +26,10 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     // Override point for customization after application launch.
     [self setupDDLog];
-    [self testQuery];
-    [self testInsert];
+    UITabBarController *rootViewController = (UITabBarController *)[self.window rootViewController];
+    UINavigationController *firstNVC = [rootViewController.viewControllers objectAtIndex:0];
+    WordListViewController *wordListVC = (WordListViewController *)firstNVC.topViewController;
+    wordListVC.context = self.managedObjectContext;
     return YES;
 }
 							
@@ -40,6 +43,7 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self saveContext];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
