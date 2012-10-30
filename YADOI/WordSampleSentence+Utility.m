@@ -6,13 +6,13 @@
 //  Copyright (c) 2012年 HaiLee. All rights reserved.
 //
 
-#import "WordSampleSentence+Create.h"
+#import "WordSampleSentence+Utility.h"
 #import "WordEntity.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
-@implementation WordSampleSentence (Create)
+@implementation WordSampleSentence (Utility)
 + (WordSampleSentence *)sampleSentenceWithDictionary:(NSDictionary *)dic
                                              forWord:(WordEntity *)wordEntity
                               inManagedObjectContext:(NSManagedObjectContext *)context

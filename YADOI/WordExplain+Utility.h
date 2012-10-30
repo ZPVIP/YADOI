@@ -8,7 +8,7 @@
 
 #import "WordExplain.h"
 
-@interface WordExplain (Create)
+@interface WordExplain (Utility)
 + (WordExplain *)wordExplainWithString:(NSString *)explainString
                                forWord:(WordEntity *)wordEntity
                 inManagedObjectContext:(NSManagedObjectContext *)context;

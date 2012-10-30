@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */; };
-		1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */; };
-		1C3A8CA9163D4FE100C893CA /* WordExplain+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */; };
-		1C3A8CAA163D4FE100C893CA /* WordExplain+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */; };
-		1C3A8CAB163D4FE100C893CA /* WordEntity+Creat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */; };
-		1C3A8CAC163D4FE100C893CA /* WordEntity+Creat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */; };
+		1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
+		1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
+		1C3A8CA9163D4FE100C893CA /* WordExplain+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Utility.m */; };
+		1C3A8CAA163D4FE100C893CA /* WordExplain+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Utility.m */; };
+		1C3A8CAB163D4FE100C893CA /* WordEntity+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C99163D4FE100C893CA /* WordEntity+Utility.m */; };
+		1C3A8CAC163D4FE100C893CA /* WordEntity+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C99163D4FE100C893CA /* WordEntity+Utility.m */; };
 		1C3A8CAD163D4FE100C893CA /* WordSampleSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */; };
 		1C3A8CAE163D4FE100C893CA /* WordSampleSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */; };
 		1C3A8CAF163D4FE100C893CA /* WordExplain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C9E163D4FE100C893CA /* WordExplain.m */; };
@@ -40,6 +40,7 @@
 		1C3A91B0163EBE2200C893CA /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8FAC163EBE2000C893CA /* DDLog.m */; };
 		1C3A91B1163EBE2200C893CA /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8FAE163EBE2000C893CA /* DDTTYLogger.m */; };
 		1C3A91B2163EBE2200C893CA /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8FAE163EBE2000C893CA /* DDTTYLogger.m */; };
+		1C48F41D163FAB3400C167FD /* CoreDataInsetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C48F41C163FAB3400C167FD /* CoreDataInsetTableViewController.m */; };
 		1CEF6FB4163C19DE00D31F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB3163C19DE00D31F32 /* UIKit.framework */; };
 		1CEF6FB6163C19DE00D31F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB5163C19DE00D31F32 /* Foundation.framework */; };
 		1CEF6FB8163C19DE00D31F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB7163C19DE00D31F32 /* CoreGraphics.framework */; };
@@ -67,12 +68,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C3A8C94163D4FE100C893CA /* WordSampleSentence+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordSampleSentence+Create.h"; sourceTree = "<group>"; };
-		1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordSampleSentence+Create.m"; sourceTree = "<group>"; };
-		1C3A8C96163D4FE100C893CA /* WordExplain+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordExplain+Create.h"; sourceTree = "<group>"; };
-		1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordExplain+Create.m"; sourceTree = "<group>"; };
-		1C3A8C98163D4FE100C893CA /* WordEntity+Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordEntity+Creat.h"; sourceTree = "<group>"; };
-		1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordEntity+Creat.m"; sourceTree = "<group>"; };
+		1C3A8C94163D4FE100C893CA /* WordSampleSentence+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordSampleSentence+Utility.h"; sourceTree = "<group>"; };
+		1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordSampleSentence+Utility.m"; sourceTree = "<group>"; };
+		1C3A8C96163D4FE100C893CA /* WordExplain+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordExplain+Utility.h"; sourceTree = "<group>"; };
+		1C3A8C97163D4FE100C893CA /* WordExplain+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordExplain+Utility.m"; sourceTree = "<group>"; };
+		1C3A8C98163D4FE100C893CA /* WordEntity+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordEntity+Utility.h"; sourceTree = "<group>"; };
+		1C3A8C99163D4FE100C893CA /* WordEntity+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordEntity+Utility.m"; sourceTree = "<group>"; };
 		1C3A8C9A163D4FE100C893CA /* ClassNameAndDicConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassNameAndDicConst.h; sourceTree = "<group>"; };
 		1C3A8C9B163D4FE100C893CA /* WordSampleSentence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSampleSentence.h; sourceTree = "<group>"; };
 		1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSampleSentence.m; sourceTree = "<group>"; };
@@ -98,6 +99,8 @@
 		1C3A8FAC163EBE2000C893CA /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
 		1C3A8FAD163EBE2000C893CA /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
 		1C3A8FAE163EBE2000C893CA /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		1C48F41B163FAB3400C167FD /* CoreDataInsetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataInsetTableViewController.h; sourceTree = "<group>"; };
+		1C48F41C163FAB3400C167FD /* CoreDataInsetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataInsetTableViewController.m; sourceTree = "<group>"; };
 		1CEF6FAF163C19DE00D31F32 /* YADOI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YADOI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEF6FB3163C19DE00D31F32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1CEF6FB5163C19DE00D31F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -149,14 +152,16 @@
 			children = (
 				1C3A8DAD163E98F700C893CA /* CoreDataTableViewController.h */,
 				1C3A8DAE163E98F700C893CA /* CoreDataTableViewController.m */,
+				1C48F41B163FAB3400C167FD /* CoreDataInsetTableViewController.h */,
+				1C48F41C163FAB3400C167FD /* CoreDataInsetTableViewController.m */,
 				1C3A8D91163DA42600C893CA /* YADMD.xcdatamodeld */,
 				1C3A8D8A163D953A00C893CA /* YAD.sqlite */,
-				1C3A8C94163D4FE100C893CA /* WordSampleSentence+Create.h */,
-				1C3A8C95163D4FE100C893CA /* WordSampleSentence+Create.m */,
-				1C3A8C96163D4FE100C893CA /* WordExplain+Create.h */,
-				1C3A8C97163D4FE100C893CA /* WordExplain+Create.m */,
-				1C3A8C98163D4FE100C893CA /* WordEntity+Creat.h */,
-				1C3A8C99163D4FE100C893CA /* WordEntity+Creat.m */,
+				1C3A8C94163D4FE100C893CA /* WordSampleSentence+Utility.h */,
+				1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */,
+				1C3A8C96163D4FE100C893CA /* WordExplain+Utility.h */,
+				1C3A8C97163D4FE100C893CA /* WordExplain+Utility.m */,
+				1C3A8C98163D4FE100C893CA /* WordEntity+Utility.h */,
+				1C3A8C99163D4FE100C893CA /* WordEntity+Utility.m */,
 				1C3A8C9A163D4FE100C893CA /* ClassNameAndDicConst.h */,
 				1C3A8C9B163D4FE100C893CA /* WordSampleSentence.h */,
 				1C3A8C9C163D4FE100C893CA /* WordSampleSentence.m */,
@@ -403,9 +408,9 @@
 			files = (
 				1CEF6FC0163C19DE00D31F32 /* main.m in Sources */,
 				1CEF6FC4163C19DE00D31F32 /* YADAppDelegate.m in Sources */,
-				1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */,
-				1C3A8CA9163D4FE100C893CA /* WordExplain+Create.m in Sources */,
-				1C3A8CAB163D4FE100C893CA /* WordEntity+Creat.m in Sources */,
+				1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */,
+				1C3A8CA9163D4FE100C893CA /* WordExplain+Utility.m in Sources */,
+				1C3A8CAB163D4FE100C893CA /* WordEntity+Utility.m in Sources */,
 				1C3A8CAD163D4FE100C893CA /* WordSampleSentence.m in Sources */,
 				1C3A8CAF163D4FE100C893CA /* WordExplain.m in Sources */,
 				1C3A8CB1163D4FE100C893CA /* WordEntity.m in Sources */,
@@ -417,6 +422,7 @@
 				1C3A91AD163EBE2200C893CA /* DDASLLogger.m in Sources */,
 				1C3A91AF163EBE2200C893CA /* DDLog.m in Sources */,
 				1C3A91B1163EBE2200C893CA /* DDTTYLogger.m in Sources */,
+				1C48F41D163FAB3400C167FD /* CoreDataInsetTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,9 +431,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CEF6FE5163C19DE00D31F32 /* YADOITests.m in Sources */,
-				1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Create.m in Sources */,
-				1C3A8CAA163D4FE100C893CA /* WordExplain+Create.m in Sources */,
-				1C3A8CAC163D4FE100C893CA /* WordEntity+Creat.m in Sources */,
+				1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */,
+				1C3A8CAA163D4FE100C893CA /* WordExplain+Utility.m in Sources */,
+				1C3A8CAC163D4FE100C893CA /* WordEntity+Utility.m in Sources */,
 				1C3A8CAE163D4FE100C893CA /* WordSampleSentence.m in Sources */,
 				1C3A8CB0163D4FE100C893CA /* WordExplain.m in Sources */,
 				1C3A8CB2163D4FE100C893CA /* WordEntity.m in Sources */,

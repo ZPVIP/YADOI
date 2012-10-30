@@ -6,14 +6,14 @@
 //  Copyright (c) 2012年 HaiLee. All rights reserved.
 //
 
-#import "WordEntity+Creat.h"
-#import "WordExplain+Create.h"
-#import "WordSampleSentence+Create.h"
+#import "WordEntity+Utility.h"
+#import "WordExplain+Utility.h"
+#import "WordSampleSentence+Utility.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
-@implementation WordEntity (Creat)
+@implementation WordEntity (Utility)
 
 + (WordEntity *)wordEntityWithJsonDictionary:(NSDictionary *)jsonDictionary
                       inManagedOjbectContext:(NSManagedObjectContext *)context
@@ -81,4 +81,17 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return wordEntity;
     
 }
+
+- (NSString *)stringForShortExplain
+{
+    NSSet *explains = self.explains;
+    
+    if (explains == nil) {
+        return nil;
+    }
+    
+    WordExplain *explain = [[explains objectEnumerator] nextObject];
+    return explain.explain;
+}
+
 @end

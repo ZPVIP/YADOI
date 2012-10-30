@@ -6,8 +6,8 @@
 //  Copyright (c) 2012年 HaiLee. All rights reserved.
 //
 
-#import "CoreDataTableViewController.h"
+#import "CoreDataInsetTableViewController.h"
 
-@interface WordListViewController : CoreDataTableViewController<UISearchBarDelegate, UISearchDisplayDelegate>
+@interface WordListViewController : CoreDataInsetTableViewController<UISearchBarDelegate, UISearchDisplayDelegate>
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @end

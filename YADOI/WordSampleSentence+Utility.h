@@ -8,8 +8,9 @@
 
 #import "WordSampleSentence.h"
 
-@interface WordSampleSentence (Create)
+@interface WordSampleSentence (Utility)
 + (WordSampleSentence *)sampleSentenceWithDictionary:(NSDictionary *)dic
                                              forWord:(WordEntity *)wordEntity
                               inManagedObjectContext:(NSManagedObjectContext *)context;
 @end
+

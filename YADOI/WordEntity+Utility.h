@@ -8,9 +8,11 @@
 
 #import "WordEntity.h"
 
-@interface WordEntity (Creat)
+@interface WordEntity (Utility)
 
 // 用一个 json 格式转换过来的 NSDictionary 来创建 WordEntity
 + (WordEntity *)wordEntityWithJsonDictionary:(NSDictionary *)jsonDictionary
                       inManagedOjbectContext:(NSManagedObjectContext *)context;
+
+- (NSString *)stringForShortExplain;
 @end

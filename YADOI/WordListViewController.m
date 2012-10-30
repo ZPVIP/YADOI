@@ -7,7 +7,7 @@
 //
 
 #import "WordListViewController.h"
-#import "WordEntity.h"
+#import "WordEntity+Utility.h"
 #import "WordExplain.h"
 #import "DDLog.h"
 
@@ -65,7 +65,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     WordEntity *wordEntity = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = wordEntity.spell;
     // 只显示Explain的第一条结果
-    cell.detailTextLabel.text = [self getExplainStringFrom:wordEntity.explains];
+    cell.detailTextLabel.text = [wordEntity stringForShortExplain];
     // 只显示第一条结果
     return cell;
 }
@@ -81,14 +81,4 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return YES;
 }
 
-// TODO: 把这个函数加到 WordEntity 里面，而不是放到这
-- (NSString *)getExplainStringFrom:(NSSet*)explains
-{
-    if (explains == nil) {
-        return nil;
-    }
-    
-    WordExplain *explain = [[explains objectEnumerator] nextObject];
-    return explain.explain;
-}
 @end

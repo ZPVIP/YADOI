@@ -6,13 +6,13 @@
 //  Copyright (c) 2012年 HaiLee. All rights reserved.
 //
 
-#import "WordExplain+Create.h"
+#import "WordExplain+Utility.h"
 #import "WordEntity.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
-@implementation WordExplain (Create)
+@implementation WordExplain (Utility)
 + (WordExplain *)wordExplainWithString:(NSString *)explainString
                                forWord:(WordEntity *)wordEntity
                 inManagedObjectContext:(NSManagedObjectContext *)context
