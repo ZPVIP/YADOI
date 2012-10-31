@@ -11,7 +11,7 @@
 #import "WordSampleSentence+Utility.h"
 #import "DDLog.h"
 
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 @implementation WordEntity (Utility)
 
@@ -82,6 +82,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
 }
 
+// 在单词列表页面显示的解释
 - (NSString *)stringForShortExplain
 {
     NSSet *explains = self.explains;
@@ -94,4 +95,38 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return explain.explain;
 }
 
+// 在单词详细页面显示的解释
+- (NSString *)stringForDetailExplain
+{
+    NSSet *explains = self.explains;
+    DDLogVerbose(@"explains count is :%d",[explains count]);
+    if ([explains count] == 0) {
+        return nil;
+    }
+
+    NSMutableString *resultString = [NSMutableString string];
+    for (WordExplain *explain in explains) {
+        [resultString appendFormat:@"%@ \n", explain.explain];
+    }
+    return [resultString substringToIndex:[resultString length] - 2];
+}
+
+// 在单词详细页面显示的例句
+- (NSString *)stringForSampleSentence
+{
+    NSSet *sampleSentences = self.sampleSentences;
+    DDLogVerbose(@"sampleSentence count is : %d", [sampleSentences count]);
+    if ([sampleSentences count] == 0) {
+        return nil;
+    }
+    
+    NSMutableString *resultString = [NSMutableString string];
+    NSUInteger idx = 0;
+    
+    for (WordSampleSentence *sampleSentence in sampleSentences) {
+        [resultString appendFormat:@"%d.  %@\n%@\n\n", ++idx, sampleSentence.original, sampleSentence.translation];
+    }
+
+    return [resultString substringToIndex:[resultString length] - 2];
+}
 @end

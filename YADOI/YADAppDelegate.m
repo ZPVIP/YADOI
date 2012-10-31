@@ -14,7 +14,7 @@
 #import "WordEntity.h"
 #import "WordListViewController.h"
 
-const static int ddLogLevel = LOG_LEVEL_VERBOSE;
+const static int ddLogLevel = LOG_LEVEL_ERROR;
 
 @implementation YADAppDelegate
 
@@ -132,12 +132,12 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
     // 将 sqlite 从 mainBundle 里拷出来，变成可写的。
     NSURL *storeURL = [[self applicationDocumentDirectory] URLByAppendingPathComponent:@"YAD.sqlite"];
-    DDLogVerbose(@"storeURL is %@", storeURL);
+    DDLogVerbose(@"单词数据库storeURL is %@", storeURL);
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
         DDLogVerbose(@"第一次启动，拷贝数据库");
         NSURL *preLoadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"YAD" ofType:@"sqlite"]];
-        DDLogVerbose(@"preLoadURL is %@", preLoadURL);
+        DDLogVerbose(@"预置数据库preLoadURL is %@", preLoadURL);
         
         NSError *error = nil;
         if (![[NSFileManager defaultManager] copyItemAtURL:preLoadURL toURL:storeURL error:&error]) {

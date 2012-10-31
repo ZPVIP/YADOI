@@ -15,4 +15,6 @@
                       inManagedOjbectContext:(NSManagedObjectContext *)context;
 
 - (NSString *)stringForShortExplain;
+- (NSString *)stringForDetailExplain;
+- (NSString *)stringForSampleSentence;
 @end

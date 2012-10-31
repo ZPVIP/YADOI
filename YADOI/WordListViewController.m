@@ -10,8 +10,9 @@
 #import "WordEntity+Utility.h"
 #import "WordExplain.h"
 #import "DDLog.h"
+#import "WordDetailViewController.h"
 
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 @interface WordListViewController ()
 
@@ -40,7 +41,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                         managedObjectContext:self.context
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
-
 }
 
 - (void)setContext:(NSManagedObjectContext *)context
@@ -72,13 +72,56 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 #pragma mark -
 #pragma mark UISearchDisplayDelegate
+// 开始搜索时，显示的是searchDisplayController.searchResultsTableView,它与self.tableView共用DataSource和Delegate，
+// 因此只需（只能）改动fetechedRequestController
+// 先Quick and Dirty 地跑起来
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSFetchRequest *request = self.fetchedResultsController.fetchRequest;
-    request.predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@",searchString];
+    self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@",searchString];
     NSError *error = nil;
     [self.fetchedResultsController performFetch:&error];
+    if (error != nil) {
+        DDLogError(@"执行这个fetchRequest时出错:%@", self.fetchedResultsController.fetchRequest);
+    }
+    DDLogVerbose(@"fetchRequest.predicate is (%@)", self.fetchedResultsController.fetchRequest.predicate);
     return YES;
+}
+
+#pragma mark -
+#pragma mark UISearchBarDelegate
+// 这时显示的是self.tableView,需要把 fetchRequest改回来。
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.fetchedResultsController.fetchRequest.predicate = nil;
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    if (error != nil) {
+        DDLogError(@"执行这个fetchRequest时出错:%@", self.fetchedResultsController.fetchRequest);
+    }
+    DDLogVerbose(@"fetchRequest.predicate is (%@)",self.fetchedResultsController.fetchRequest.predicate);
+}
+
+#pragma mark -
+#pragma mark Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showWordDetail"] && [sender isKindOfClass:[UITableViewCell class]]) {
+        // 需要判断是从哪个 tableView 进行segue的
+        UITableViewCell *senderCell = sender;
+        DDLogVerbose(@"segue from %@",(senderCell.superview == self.tableView) ?
+                     @"self.tableView" : @"self.searchDisplayController.searchResultsTableView");
+        NSIndexPath *indexPath = nil;
+        if (senderCell.superview == self.tableView) {
+            indexPath = [self.tableView indexPathForSelectedRow];
+        } else {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        }
+        
+        DDLogVerbose(@"the indexPath is %@: ", indexPath);
+        WordEntity *wordEntity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        WordDetailViewController *detailVC = segue.destinationViewController;
+        detailVC.theWordEntity = wordEntity;
+    }
 }
 
 @end

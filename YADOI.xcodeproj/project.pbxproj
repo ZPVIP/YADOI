@@ -41,6 +41,7 @@
 		1C3A91B1163EBE2200C893CA /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8FAE163EBE2000C893CA /* DDTTYLogger.m */; };
 		1C3A91B2163EBE2200C893CA /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8FAE163EBE2000C893CA /* DDTTYLogger.m */; };
 		1C48F41D163FAB3400C167FD /* CoreDataInsetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C48F41C163FAB3400C167FD /* CoreDataInsetTableViewController.m */; };
+		1C4980EA163FBC4800D94BB8 /* WordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4980E9163FBC4800D94BB8 /* WordDetailViewController.m */; };
 		1CEF6FB4163C19DE00D31F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB3163C19DE00D31F32 /* UIKit.framework */; };
 		1CEF6FB6163C19DE00D31F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB5163C19DE00D31F32 /* Foundation.framework */; };
 		1CEF6FB8163C19DE00D31F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB7163C19DE00D31F32 /* CoreGraphics.framework */; };
@@ -101,6 +102,8 @@
 		1C3A8FAE163EBE2000C893CA /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
 		1C48F41B163FAB3400C167FD /* CoreDataInsetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataInsetTableViewController.h; sourceTree = "<group>"; };
 		1C48F41C163FAB3400C167FD /* CoreDataInsetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataInsetTableViewController.m; sourceTree = "<group>"; };
+		1C4980E8163FBC4800D94BB8 /* WordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordDetailViewController.h; sourceTree = "<group>"; };
+		1C4980E9163FBC4800D94BB8 /* WordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordDetailViewController.m; sourceTree = "<group>"; };
 		1CEF6FAF163C19DE00D31F32 /* YADOI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YADOI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEF6FB3163C19DE00D31F32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1CEF6FB5163C19DE00D31F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -237,6 +240,8 @@
 				1CEF6FC3163C19DE00D31F32 /* YADAppDelegate.m */,
 				1C3A8DB1163E9AC900C893CA /* WordListViewController.h */,
 				1C3A8DB2163E9ACA00C893CA /* WordListViewController.m */,
+				1C4980E8163FBC4800D94BB8 /* WordDetailViewController.h */,
+				1C4980E9163FBC4800D94BB8 /* WordDetailViewController.m */,
 				1C3A8DAA163E979100C893CA /* MainStoryboard.storyboard */,
 				1CEF6FBA163C19DE00D31F32 /* Supporting Files */,
 				1C3A8CB9163D50A600C893CA /* Libs */,
@@ -423,6 +428,7 @@
 				1C3A91AF163EBE2200C893CA /* DDLog.m in Sources */,
 				1C3A91B1163EBE2200C893CA /* DDTTYLogger.m in Sources */,
 				1C48F41D163FAB3400C167FD /* CoreDataInsetTableViewController.m in Sources */,
+				1C4980EA163FBC4800D94BB8 /* WordDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
