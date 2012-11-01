@@ -9,6 +9,7 @@
 #import "WordEntity+Utility.h"
 #import "WordExplain+Utility.h"
 #import "WordSampleSentence+Utility.h"
+#import "NewWord.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_ERROR;
@@ -77,9 +78,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
         }
     }
 
-    
-    return wordEntity;
-    
+    return wordEntity;    
 }
 
 // 在单词列表页面显示的解释
@@ -128,5 +127,56 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     }
 
     return [resultString substringToIndex:[resultString length] - 2];
+}
+
+- (BOOL)isInTheNewWordBook
+{
+    BOOL isAdded = NO;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"NewWord"];
+    request.predicate = [NSPredicate predicateWithFormat:@"word == %@", self];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"word" ascending:YES];
+    request.sortDescriptors = @[sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *mathes = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (error != nil) {
+        DDLogError(@"执行 FetchRequest 时出错：%@", request);
+        return NO;
+    }
+    
+    if ([mathes count] == 1) {
+        isAdded = YES;
+    } else {
+        isAdded = NO;
+    }
+    
+    return isAdded;
+}
+
+- (void)addToTheNewWordBook
+{
+    NewWord *newWord = [NSEntityDescription insertNewObjectForEntityForName:@"NewWord" inManagedObjectContext:self.managedObjectContext];
+    newWord.word = self;
+    newWord.rememberLevel = 0;
+    // 今天加入的单词下次复习时间是今天23点59（之前）
+    NSDate *currentDate = [NSDate date];
+    NSCalendar *gregorCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned unitFlag = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *dateCompents = [gregorCalendar components:unitFlag fromDate:currentDate];
+    dateCompents.hour = 23;
+    dateCompents.minute = 59;
+    dateCompents.second = 59;
+    NSDate *nextReviewDate = [gregorCalendar dateFromComponents:dateCompents];
+    
+    newWord.nextReviewDate = nextReviewDate;
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error] || error != nil) {
+        DDLogError(@"单词加入到生词本时出错,%@, %@", [error localizedDescription], [error localizedFailureReason]);
+    } else {
+        DDLogVerbose(@"%@ 加入到生词本成功", self.spell);
+    }
 }
 @end

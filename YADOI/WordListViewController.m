@@ -19,13 +19,22 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 @end
 
 @implementation WordListViewController
-@synthesize context = _context;
+@synthesize managedObjectContext = _managedObjectContext;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	if (self.context == nil) {
+	if (self.managedObjectContext == nil) {
         DDLogError(@"出错了，MOC未能正常加载！");
         // 是否需要自己再加载次context呢？
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if (indexPath != nil) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
@@ -38,15 +47,15 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                        managedObjectContext:self.context
+                                                                        managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
 }
 
-- (void)setContext:(NSManagedObjectContext *)context
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    if (_context != context) {
-        _context = context;
+    if (_managedObjectContext != managedObjectContext) {
+        _managedObjectContext = managedObjectContext;
         [self setupFetchedRequestsController];
     }
 }

@@ -17,4 +17,8 @@
 - (NSString *)stringForShortExplain;
 - (NSString *)stringForDetailExplain;
 - (NSString *)stringForSampleSentence;
+// 是否在单词本中
+- (BOOL)isInTheNewWordBook;
+// 把自己加入单词本
+- (void)addToTheNewWordBook;
 @end

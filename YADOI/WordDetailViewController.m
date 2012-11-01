@@ -10,6 +10,7 @@
 #import "WordEntity+Utility.h"
 #import "WordExplain+Utility.h"
 #import "WordSampleSentence+Utility.h"
+#import "NewWord.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -19,6 +20,19 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 @end
 
 @implementation WordDetailViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self configureView];
+}
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view
+}
+
 // 调整页面
 - (void)configureView
 {
@@ -36,13 +50,21 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     } else {
         self.phoneticLabel.text = nil;
     }
-
+    
     // 解释
     self.explainsTextView.text = [self.theWordEntity stringForDetailExplain];
     
     // 例句
     self.sampleSentenceTextView.text = [self.theWordEntity stringForSampleSentence];
     
+    // 判断该单词是否加入生词本
+    [self.addToNewWordBookButton setTitle:@"Add" forState:UIControlStateNormal];
+    [self.addToNewWordBookButton setTitle:@"Added" forState:UIControlStateDisabled];
+    if ([self.theWordEntity isInTheNewWordBook]) {
+        self.addToNewWordBookButton.enabled = NO;
+    } else {
+        self.addToNewWordBookButton.enabled = YES;
+    }
 }
 
 
@@ -56,7 +78,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     // 例句的高度
     NSString *sampleSentences = [self.theWordEntity stringForSampleSentence];
     CGSize sentenceSize = [sampleSentences sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13]
-                                    constrainedToSize:CGSizeMake(320, 220)];
+                                      constrainedToSize:CGSizeMake(320, 220)];
     
     CGFloat height = 0;
     switch (indexPath.row) {
@@ -73,6 +95,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return height;
 }
 
+// TODO:自己定义Cell，要不格子线太多了。
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([self.theWordEntity.sampleSentences count] == 0) {
@@ -80,20 +103,18 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     } else {
         return 3;
     }
-
+    
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self configureView];
+// 将单词加入生词本
+- (IBAction)addToNewWordBook:(UIButton *)sender {
+    if (![self.theWordEntity isInTheNewWordBook]) {
+        [self.theWordEntity addToTheNewWordBook];
+        sender.enabled = NO;
+    }
 }
 
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self configureView];
+- (IBAction)readTheWord:(id)sender {
 }
 
 
@@ -102,6 +123,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self setPhoneticLabel:nil];
     [self setExplainsTextView:nil];
     [self setSampleSentenceTextView:nil];
+    [self setAddToNewWordBookButton:nil];
     [super viewDidUnload];
 }
+
 @end

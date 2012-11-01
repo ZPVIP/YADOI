@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0403BE1641423C00F0B254 /* NewWordBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403BD1641423C00F0B254 /* NewWordBookViewController.m */; };
 		1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
 		1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
 		1C3A8CA9163D4FE100C893CA /* WordExplain+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Utility.m */; };
@@ -69,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C0403BC1641423C00F0B254 /* NewWordBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWordBookViewController.h; sourceTree = "<group>"; };
+		1C0403BD1641423C00F0B254 /* NewWordBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWordBookViewController.m; sourceTree = "<group>"; };
 		1C3A8C94163D4FE100C893CA /* WordSampleSentence+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordSampleSentence+Utility.h"; sourceTree = "<group>"; };
 		1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordSampleSentence+Utility.m"; sourceTree = "<group>"; };
 		1C3A8C96163D4FE100C893CA /* WordExplain+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordExplain+Utility.h"; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				1C3A8DB2163E9ACA00C893CA /* WordListViewController.m */,
 				1C4980E8163FBC4800D94BB8 /* WordDetailViewController.h */,
 				1C4980E9163FBC4800D94BB8 /* WordDetailViewController.m */,
+				1C0403BC1641423C00F0B254 /* NewWordBookViewController.h */,
+				1C0403BD1641423C00F0B254 /* NewWordBookViewController.m */,
 				1C3A8DAA163E979100C893CA /* MainStoryboard.storyboard */,
 				1CEF6FBA163C19DE00D31F32 /* Supporting Files */,
 				1C3A8CB9163D50A600C893CA /* Libs */,
@@ -429,6 +434,7 @@
 				1C3A91B1163EBE2200C893CA /* DDTTYLogger.m in Sources */,
 				1C48F41D163FAB3400C167FD /* CoreDataInsetTableViewController.m in Sources */,
 				1C4980EA163FBC4800D94BB8 /* WordDetailViewController.m in Sources */,
+				1C0403BE1641423C00F0B254 /* NewWordBookViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

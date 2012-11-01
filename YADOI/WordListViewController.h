@@ -9,5 +9,5 @@
 #import "CoreDataInsetTableViewController.h"
 
 @interface WordListViewController : CoreDataInsetTableViewController<UISearchBarDelegate, UISearchDisplayDelegate>
-@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @end

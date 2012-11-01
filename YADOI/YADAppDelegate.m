@@ -13,6 +13,7 @@
 #import "DDASLLogger.h"
 #import "WordEntity.h"
 #import "WordListViewController.h"
+#import "NewWordBookViewController.h"
 
 const static int ddLogLevel = LOG_LEVEL_ERROR;
 
@@ -24,12 +25,19 @@ const static int ddLogLevel = LOG_LEVEL_ERROR;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     [self setupDDLog];
     UITabBarController *rootViewController = (UITabBarController *)[self.window rootViewController];
-    UINavigationController *firstNVC = [rootViewController.viewControllers objectAtIndex:0];
-    WordListViewController *wordListVC = (WordListViewController *)firstNVC.topViewController;
-    wordListVC.context = self.managedObjectContext;
+    
+    // 单词列表和查词页面
+    UINavigationController *lookupWordNVC = [rootViewController.viewControllers objectAtIndex:0];
+    WordListViewController *wordListVC = (WordListViewController *)lookupWordNVC.topViewController;
+    wordListVC.managedObjectContext = self.managedObjectContext;
+    
+    // 生词本页面
+    UINavigationController *wordBookNVC = [rootViewController.viewControllers objectAtIndex:1];
+    NewWordBookViewController *wordBookVC = (NewWordBookViewController *)wordBookNVC.topViewController;
+    wordBookVC.managedOjbectContext = self.managedObjectContext;
+    
     return YES;
 }
 							
