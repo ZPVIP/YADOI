@@ -47,6 +47,22 @@
 		1C4DA886164672AC00EA07AF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA884164672AC00EA07AF /* SettingsViewController.m */; };
 		1C4DA88B164697AD00EA07AF /* DailyReviewWordNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA88A164697AC00EA07AF /* DailyReviewWordNumberViewController.m */; };
 		1C4DA88C164697AD00EA07AF /* DailyReviewWordNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA88A164697AC00EA07AF /* DailyReviewWordNumberViewController.m */; };
+		1C4DA8911646C5A400EA07AF /* addToWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88D1646C5A400EA07AF /* addToWordBook.png */; };
+		1C4DA8921646C5A400EA07AF /* addToWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88D1646C5A400EA07AF /* addToWordBook.png */; };
+		1C4DA8931646C5A400EA07AF /* addToWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */; };
+		1C4DA8941646C5A400EA07AF /* addToWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */; };
+		1C4DA8951646C5A400EA07AF /* removeFromWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */; };
+		1C4DA8961646C5A400EA07AF /* removeFromWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */; };
+		1C4DA8971646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */; };
+		1C4DA8981646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */; };
+		1C4DA8AF1646EB7E00EA07AF /* wordDeleted.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */; };
+		1C4DA8B01646EB7E00EA07AF /* wordDeleted.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */; };
+		1C4DA8B11646EB7E00EA07AF /* wordDeleted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */; };
+		1C4DA8B21646EB7E00EA07AF /* wordDeleted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */; };
+		1C4DA8B31646EB7E00EA07AF /* wordAdded.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AD1646EB7D00EA07AF /* wordAdded.png */; };
+		1C4DA8B41646EB7E00EA07AF /* wordAdded.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AD1646EB7D00EA07AF /* wordAdded.png */; };
+		1C4DA8B51646EB7E00EA07AF /* wordAdded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AE1646EB7E00EA07AF /* wordAdded@2x.png */; };
+		1C4DA8B61646EB7E00EA07AF /* wordAdded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AE1646EB7E00EA07AF /* wordAdded@2x.png */; };
 		1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8A9164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A7164450E900D9FD2F /* icon_settings.png */; };
@@ -156,6 +172,14 @@
 		1C4DA8881646740500EA07AF /* SettingsKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsKey.h; sourceTree = "<group>"; };
 		1C4DA889164697AC00EA07AF /* DailyReviewWordNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyReviewWordNumberViewController.h; sourceTree = "<group>"; };
 		1C4DA88A164697AC00EA07AF /* DailyReviewWordNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyReviewWordNumberViewController.m; sourceTree = "<group>"; };
+		1C4DA88D1646C5A400EA07AF /* addToWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToWordBook.png; sourceTree = "<group>"; };
+		1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addToWordBook@2x.png"; sourceTree = "<group>"; };
+		1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeFromWordBook.png; sourceTree = "<group>"; };
+		1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "removeFromWordBook@2x.png"; sourceTree = "<group>"; };
+		1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wordDeleted.png; sourceTree = "<group>"; };
+		1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordDeleted@2x.png"; sourceTree = "<group>"; };
+		1C4DA8AD1646EB7D00EA07AF /* wordAdded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wordAdded.png; sourceTree = "<group>"; };
+		1C4DA8AE1646EB7E00EA07AF /* wordAdded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordAdded@2x.png"; sourceTree = "<group>"; };
 		1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_settings@2x.png"; sourceTree = "<group>"; };
 		1CECF8A7164450E900D9FD2F /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_settings.png; sourceTree = "<group>"; };
 		1CECF93C16457E8000D9FD2F /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -251,6 +275,14 @@
 		1C0403C4164285DA00F0B254 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */,
+				1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */,
+				1C4DA8AD1646EB7D00EA07AF /* wordAdded.png */,
+				1C4DA8AE1646EB7E00EA07AF /* wordAdded@2x.png */,
+				1C4DA88D1646C5A400EA07AF /* addToWordBook.png */,
+				1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */,
+				1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */,
+				1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */,
 				1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */,
 				1CECF8A7164450E900D9FD2F /* icon_settings.png */,
 				1C0403CD164287C600F0B254 /* icon_wordBook.png */,
@@ -351,7 +383,6 @@
 		1CEF6FA4163C19DD00D31F32 = {
 			isa = PBXGroup;
 			children = (
-				1CECF98616459A1400D9FD2F /* Security.framework */,
 				1CEF6FB9163C19DE00D31F32 /* YADOI */,
 				1CEF6FDD163C19DE00D31F32 /* YADOITests */,
 				1CEF6FB2163C19DE00D31F32 /* Frameworks */,
@@ -371,6 +402,7 @@
 		1CEF6FB2163C19DE00D31F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CECF98616459A1400D9FD2F /* Security.framework */,
 				1CECF9841645858A00D9FD2F /* AVFoundation.framework */,
 				1CECF982164583A100D9FD2F /* SystemConfiguration.framework */,
 				1CECF9801645837A00D9FD2F /* libz.dylib */,
@@ -535,6 +567,14 @@
 				1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */,
 				1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */,
 				1CECF9BF16464BAC00D9FD2F /* YAD.sqlite in Resources */,
+				1C4DA8911646C5A400EA07AF /* addToWordBook.png in Resources */,
+				1C4DA8931646C5A400EA07AF /* addToWordBook@2x.png in Resources */,
+				1C4DA8951646C5A400EA07AF /* removeFromWordBook.png in Resources */,
+				1C4DA8971646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */,
+				1C4DA8AF1646EB7E00EA07AF /* wordDeleted.png in Resources */,
+				1C4DA8B11646EB7E00EA07AF /* wordDeleted@2x.png in Resources */,
+				1C4DA8B31646EB7E00EA07AF /* wordAdded.png in Resources */,
+				1C4DA8B51646EB7E00EA07AF /* wordAdded@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +587,14 @@
 				1CECF8A9164450E900D9FD2F /* icon_settings@2x.png in Resources */,
 				1CECF8AB164450E900D9FD2F /* icon_settings.png in Resources */,
 				1CECF9C016464BAC00D9FD2F /* YAD.sqlite in Resources */,
+				1C4DA8921646C5A400EA07AF /* addToWordBook.png in Resources */,
+				1C4DA8941646C5A400EA07AF /* addToWordBook@2x.png in Resources */,
+				1C4DA8961646C5A400EA07AF /* removeFromWordBook.png in Resources */,
+				1C4DA8981646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */,
+				1C4DA8B01646EB7E00EA07AF /* wordDeleted.png in Resources */,
+				1C4DA8B21646EB7E00EA07AF /* wordDeleted@2x.png in Resources */,
+				1C4DA8B41646EB7E00EA07AF /* wordAdded.png in Resources */,
+				1C4DA8B61646EB7E00EA07AF /* wordAdded@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

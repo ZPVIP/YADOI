@@ -23,6 +23,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 @property (nonatomic, strong) AVAudioPlayer *player;
 @property (nonatomic, strong) ASIHTTPRequest *request;
 
+// 传入一张图片的名字，显示，然后淡出
+-(void)showTip:(NSString *)imageName;
+
 @end
 
 @implementation WordDetailViewController
@@ -58,13 +61,18 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.sampleSentenceTextView.text = [self.theWordEntity stringForSampleSentence];
     
     // 判断该单词是否加入生词本
-    [self.addToNewWordBookButton setTitle:@"Add" forState:UIControlStateNormal];
-    [self.addToNewWordBookButton setTitle:@"Added" forState:UIControlStateDisabled];
-    if ([self.theWordEntity isInTheNewWordBook]) {
-        self.addToNewWordBookButton.enabled = NO;
+    BOOL isInNewWordBook = [self.theWordEntity isInTheNewWordBook];
+    NSString  *imageName = nil;
+    if (isInNewWordBook) {
+        imageName = @"removeFromWordBook";
     } else {
-        self.addToNewWordBookButton.enabled = YES;
+       imageName = @"addToWordBook";
     }
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName]
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(addToOrRemoveFromWordBook)];
+    self.navigationItem.rightBarButtonItem = barButton;
 }
 
 
@@ -104,14 +112,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         return 3;
     }
     
-}
-
-// 将单词加入生词本
-- (IBAction)addToNewWordBook:(UIButton *)sender {
-    if (![self.theWordEntity isInTheNewWordBook]) {
-        [self.theWordEntity addToTheNewWordBook];
-        sender.enabled = NO;
-    }
 }
 
 - (IBAction)readTheWord:(UIButton *)sender {
@@ -168,6 +168,39 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.player = nil;
 }
 
+- (void)addToOrRemoveFromWordBook
+{
+    if ([self.theWordEntity isInTheNewWordBook]) {
+        [self.theWordEntity removeFromWordBook];
+        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"addToWordBook"];
+        [self showTip:@"wordDeleted.png"];
+    } else {
+        [self.theWordEntity addToTheNewWordBook];
+        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"removeFromWordBook"];
+        [self showTip:@"wordAdded.png"];
+    }
+}
+
+- (void)showTip:(NSString *)imageName
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    CGFloat imageHeight = imageView.image.size.height;
+    CGFloat imageWidth = imageView.image.size.width;
+    // 又见 Magic Number;
+    imageView.frame = CGRectMake((320-imageWidth)/2, 367 - imageHeight, imageWidth, imageHeight);
+    [self.view addSubview:imageView];
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+        imageView.frame = CGRectMake((320-imageWidth)/2, 367-imageHeight-75, imageWidth, imageHeight);
+    } completion:^(BOOL finished){
+        // 淡出
+        [UIView animateWithDuration:1.2 animations:^{
+            imageView.alpha = 0;
+        } completion:^(BOOL finished){
+            [imageView removeFromSuperview];
+        }];
+    }];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -181,7 +214,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self setPhoneticLabel:nil];
     [self setExplainsTextView:nil];
     [self setSampleSentenceTextView:nil];
-    [self setAddToNewWordBookButton:nil];
     [super viewDidUnload];
 }
 

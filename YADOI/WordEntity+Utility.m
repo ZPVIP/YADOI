@@ -12,7 +12,7 @@
 #import "NewWord.h"
 #import "DDLog.h"
 
-static const int ddLogLevel = LOG_LEVEL_ERROR;
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation WordEntity (Utility)
 
@@ -145,7 +145,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"NewWord"];
     request.predicate = [NSPredicate predicateWithFormat:@"word == %@", self];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"word" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"word.spell" ascending:YES];
     request.sortDescriptors = @[sortDescriptor];
     
     NSError *error = nil;
@@ -167,6 +167,12 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 - (void)addToTheNewWordBook
 {
+    // 判断是否已经在单词本中
+    if ([self isInTheNewWordBook]) {
+        DDLogWarn(@"%@ 已经在单词本中了", self.spell);
+        return;
+    }
+    
     NewWord *newWord = [NSEntityDescription insertNewObjectForEntityForName:@"NewWord" inManagedObjectContext:self.managedObjectContext];
     newWord.word = self;
     newWord.rememberLevel = 0;
@@ -190,4 +196,33 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
         DDLogVerbose(@"%@ 加入到生词本成功", self.spell);
     }
 }
+
+- (void)removeFromWordBook
+{
+    if (![self isInTheNewWordBook]) {
+        DDLogWarn(@"%@ 不在单词本中，不能删除", self.spell);
+        return;
+    }
+    // 是的，没有双向关联真的很不方便。
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"NewWord"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"word == %@", self];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"word.spell" ascending:YES];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *matches = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (error != nil) {
+        DDLogError(@"执行fetchRequest %@ 时出错", fetchRequest);
+        return;
+    }
+    
+    if (matches == nil || [matches count] > 1) {
+        DDLogError(@"出错了, %@ 可能被多次加入到生词本中",self.spell);
+    } else if ([matches count] == 1){
+        [self.managedObjectContext deleteObject:[matches lastObject]];
+        DDLogVerbose(@"成功将 %@ 从单词本删除", self.spell);
+    }
+}
+
 @end

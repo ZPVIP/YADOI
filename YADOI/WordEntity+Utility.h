@@ -25,4 +25,6 @@
 - (BOOL)isInTheNewWordBook;
 // 把自己加入单词本
 - (void)addToTheNewWordBook;
+// 将自己从单词本中删除
+- (void)removeFromWordBook;
 @end

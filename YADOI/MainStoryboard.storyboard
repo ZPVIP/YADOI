@@ -230,21 +230,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UeE-72-N8j">
-                                                    <rect key="frame" x="222" y="44" width="78" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Add">
-                                                        <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <state key="highlighted">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addToNewWordBook:" destination="BQd-h0-N1t" eventType="touchUpInside" id="cNg-72-B1z"/>
-                                                    </connections>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FnS-8w-NkH">
                                                     <rect key="frame" x="222" y="8" width="78" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -308,9 +293,10 @@
                             <outlet property="delegate" destination="BQd-h0-N1t" id="Mla-gV-goQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ggO-MD-qmE"/>
+                    <navigationItem key="navigationItem" id="ggO-MD-qmE">
+                        <barButtonItem key="rightBarButtonItem" image="addToWordBook.png" id="gfk-2o-QNd"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="addToNewWordBookButton" destination="UeE-72-N8j" id="rHq-fX-Dtg"/>
                         <outlet property="explainsTextView" destination="H5C-gK-Ap5" id="c8a-xE-4ap"/>
                         <outlet property="phoneticLabel" destination="sHs-RV-BRt" id="sa5-0F-flH"/>
                         <outlet property="sampleSentenceTextView" destination="r4f-rv-whk" id="Dz9-rX-TKf"/>
@@ -646,6 +632,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addToWordBook.png" width="21" height="19"/>
         <image name="displayExplain.png" width="157" height="122"/>
         <image name="history.png" width="21" height="21"/>
         <image name="icon_search.png" width="32" height="24"/>

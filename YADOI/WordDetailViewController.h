@@ -12,7 +12,6 @@
 @interface WordDetailViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UILabel *wordSpellLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneticLabel;
-@property (weak, nonatomic) IBOutlet UIButton *addToNewWordBookButton;
 
 @property (weak, nonatomic) IBOutlet UITextView *explainsTextView;
 
@@ -21,6 +20,5 @@
 @property (nonatomic, strong) WordEntity *theWordEntity;
 
 
-- (IBAction)addToNewWordBook:(UIButton *)sender;
 - (IBAction)readTheWord:(UIButton *)sender;
 @end
