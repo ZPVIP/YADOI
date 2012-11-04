@@ -1,8 +1,8 @@
 //
 //  NewWord.m
-//  YADUtility
+//  YADOI
 //
-//  Created by HaiLee on 12-10-27.
+//  Created by HaiLee on 12-11-4.
 //  Copyright (c) 2012年 HaiLee. All rights reserved.
 //
 
@@ -14,6 +14,8 @@
 
 @dynamic nextReviewDate;
 @dynamic rememberLevel;
+@dynamic addDate;
+@dynamic addDateString;
 @dynamic word;
 
 @end

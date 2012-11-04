@@ -129,6 +129,16 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     return [resultString substringToIndex:[resultString length] - 2];
 }
 
+- (NSString *)stringForPhonetic
+{
+    NSString *phonetic = self.phonetic;
+    if (phonetic == nil) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"[%@]", self.phonetic];
+    }
+}
+
 - (BOOL)isInTheNewWordBook
 {
     BOOL isAdded = NO;
@@ -160,6 +170,8 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     NewWord *newWord = [NSEntityDescription insertNewObjectForEntityForName:@"NewWord" inManagedObjectContext:self.managedObjectContext];
     newWord.word = self;
     newWord.rememberLevel = 0;
+    // 加入单词本的时间
+    newWord.addDate = [NSDate date];
     // 今天加入的单词下次复习时间是今天23点59（之前）
     NSDate *currentDate = [NSDate date];
     NSCalendar *gregorCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -169,7 +181,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     dateCompents.minute = 59;
     dateCompents.second = 59;
     NSDate *nextReviewDate = [gregorCalendar dateFromComponents:dateCompents];
-    
+    // TODO:看一下是否准确
     newWord.nextReviewDate = nextReviewDate;
     
     NSError *error = nil;

@@ -1,8 +1,8 @@
 //
 //  LookUpHistory.h
-//  YADUtility
+//  YADOI
 //
-//  Created by HaiLee on 12-10-27.
+//  Created by HaiLee on 12-11-4.
 //  Copyright (c) 2012年 HaiLee. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * count;
 @property (nonatomic, retain) NSDate * onDate;
+@property (nonatomic, retain) NSString * addDateString;
 @property (nonatomic, retain) WordEntity *word;
 
 @end

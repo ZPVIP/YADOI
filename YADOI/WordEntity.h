@@ -1,8 +1,8 @@
 //
 //  WordEntity.h
-//  YADUtility
+//  YADOI
 //
-//  Created by HaiLee on 12-10-27.
+//  Created by HaiLee on 12-11-4.
 //  Copyright (c) 2012年 HaiLee. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * phonetic;
 @property (nonatomic, retain) NSString * spell;
+@property (nonatomic, retain) NSString * firstLetter;
 @property (nonatomic, retain) NSSet *explains;
 @property (nonatomic, retain) NSSet *sampleSentences;
 @end

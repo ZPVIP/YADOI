@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) WordEntity *theWordEntity;
 
-- (IBAction)addToNewWordBook:(id)sender;
-- (IBAction)readTheWord:(id)sender;
+
+- (IBAction)addToNewWordBook:(UIButton *)sender;
+- (IBAction)readTheWord:(UIButton *)sender;
 @end

@@ -7,9 +7,10 @@
 //
 
 #import "NewWordBookViewController.h"
-#import "NewWord.h"
+#import "NewWord+Utility.h"
 #import "WordEntity+Utility.h"
 #import "WordDetailViewController.h"
+#import "WordReviewViewController.h"
 #import "DDLog.h"
 
 const static int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -37,10 +38,9 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                      ascending:YES
                                                                       selector:@selector(localizedCaseInsensitiveCompare:)];
     request.sortDescriptors = @[wordAsscendingSortDescriptor];
-    
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.managedOjbectContext
-                                                                          sectionNameKeyPath:nil
+                                                                          sectionNameKeyPath:@"addDateString"
                                                                                    cacheName:nil];
 
 }
@@ -105,6 +105,17 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     }   
 }
 
+// 没有sectionIndex
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return 0;
+}
+
 // 搜索功能 和 WordListViewController 相似
 #pragma mark -
 #pragma mark SearchDisplayDelegate
@@ -134,6 +145,7 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showWordDetailFromWordBook"] && [sender isKindOfClass:[UITableViewCell class]]){
+        // 查看生词
         UITableViewCell *senderCell = (UITableViewCell *)sender;
         
         NSIndexPath *indexPath = nil;
@@ -143,10 +155,20 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
         }
         
-        DDLogVerbose(@"the indexPath is %@: ", indexPath);
         NewWord *newWord = [self.fetchedResultsController objectAtIndexPath:indexPath];
         WordDetailViewController *detailVC = segue.destinationViewController;
         detailVC.theWordEntity = newWord.word;
+    } else if ([segue.identifier isEqualToString:@"reviewWordBook"]){
+        // 复习生词 取得要复习的生词
+        NSArray *wordsToReview = [NewWord todaysReviewWordsWithContext:self.managedOjbectContext];
+        WordReviewViewController *reviewVC = segue.destinationViewController;
+        // 如果单词本没有单词，则将其置 nil 以与今天已经复习完区别开
+        // 同时需要注意的是，如果执行搜索时出错，那wordsToReview也是nil;
+        if ([NewWord countOfNewWordWithConext:self.managedOjbectContext] == 0) {
+            reviewVC.wordsToReview = nil;
+        } else {
+            reviewVC.wordsToReview = wordsToReview;
+        }
     }
 }
 @end
