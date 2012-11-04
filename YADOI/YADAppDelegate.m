@@ -14,8 +14,9 @@
 #import "WordEntity.h"
 #import "WordListViewController.h"
 #import "NewWordBookViewController.h"
+#import "SettingsKey.h"
 
-const static int ddLogLevel = LOG_LEVEL_ERROR;
+const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation YADAppDelegate
 
@@ -26,6 +27,21 @@ const static int ddLogLevel = LOG_LEVEL_ERROR;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self setupDDLog];
+    // 加入第一次启动(firstLaunch)的标志字段
+    [[NSUserDefaults standardUserDefaults]registerDefaults:@{@"firstLaunch":[NSNumber numberWithBool:YES]}];
+    // 如果是第一次启动，预置用户的设置项
+    if ([self isFirstLaunch]) {
+        DDLogVerbose(@"是第一次启动，预置用户设置项");
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:GET_PHONETIC_FROM_NETWORK];
+        [defaults setBool:NO forKey:ONLY_USE_LOCAL_DIC];
+        [defaults setInteger:30 forKey:DAILY_REVIEW_WORD_NUMBER];
+        [defaults synchronize];
+    } else {
+        DDLogVerbose(@"不是第一次启动了，使用用户设置的数据");
+    }
+    
+    
     UITabBarController *rootViewController = (UITabBarController *)[self.window rootViewController];
     
     // 单词列表和查词页面
@@ -52,6 +68,9 @@ const static int ddLogLevel = LOG_LEVEL_ERROR;
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     [self saveContext];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    DDLogVerbose(@"第一次启动设置成NO");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -68,6 +87,9 @@ const static int ddLogLevel = LOG_LEVEL_ERROR;
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [self saveContext];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    DDLogVerbose(@"firstLaunch设置成NO");
 }
 
 - (void)setupDDLog
@@ -98,6 +120,12 @@ const static int ddLogLevel = LOG_LEVEL_ERROR;
     
     [self.managedObjectContext deleteObject:testWord];
     [self testQuery];
+}
+
+// 是否是第一次启动
+- (BOOL)isFirstLaunch
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
 }
 
 - (void)saveContext

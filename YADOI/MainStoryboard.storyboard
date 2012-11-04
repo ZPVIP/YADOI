@@ -420,10 +420,10 @@
             </objects>
             <point key="canvasLocation" x="-666" y="-18"/>
         </scene>
-        <!--Table View Controller - 设置-->
+        <!--Settings View Controller - 设置-->
         <scene sceneID="0v3-E9-t3P">
             <objects>
-                <tableViewController id="oz2-pf-W21" sceneMemberID="viewController">
+                <tableViewController id="oz2-pf-W21" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="MOI-z6-ajG">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -448,6 +448,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="DUl-xA-OQ6">
                                                     <rect key="frame" x="203" y="8" width="79" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="getPhoneticFromNetWorkChanged:" destination="oz2-pf-W21" eventType="valueChanged" id="36K-cn-leL"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -470,6 +473,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Wl2-pc-bDc">
                                                     <rect key="frame" x="203" y="8" width="79" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="onlyUseLocalDicChanged:" destination="oz2-pf-W21" eventType="valueChanged" id="Fiv-87-U3y"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -541,6 +547,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="QYq-sZ-Zch"/>
+                    <connections>
+                        <outlet property="dailyReviewWordNumberLabel" destination="P4y-wc-4Ad" id="I8i-vI-4xF"/>
+                        <outlet property="getPhoneticFromNetWorkSwitch" destination="DUl-xA-OQ6" id="28t-fC-2AX"/>
+                        <outlet property="onlyUseLocalDicSwitch" destination="Wl2-pc-bDc" id="QDl-Ya-Aar"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFt-KE-Rdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -639,6 +650,16 @@
         </class>
         <class className="NewWordBookViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewWordBookViewController.h"/>
+        </class>
+        <class className="SettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="getPhoneticFromNetWorkChanged:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="onlyUseLocalDicChanged:" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="dailyReviewWordNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="getPhoneticFromNetWorkSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="onlyUseLocalDicSwitch" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="WordDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WordDetailViewController.h"/>

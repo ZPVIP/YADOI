@@ -43,6 +43,8 @@
 		1C3A91B2163EBE2200C893CA /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8FAE163EBE2000C893CA /* DDTTYLogger.m */; };
 		1C48F41D163FAB3400C167FD /* CoreDataInsetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C48F41C163FAB3400C167FD /* CoreDataInsetTableViewController.m */; };
 		1C4980EA163FBC4800D94BB8 /* WordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4980E9163FBC4800D94BB8 /* WordDetailViewController.m */; };
+		1C4DA885164672AC00EA07AF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA884164672AC00EA07AF /* SettingsViewController.m */; };
+		1C4DA886164672AC00EA07AF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA884164672AC00EA07AF /* SettingsViewController.m */; };
 		1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8A9164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A7164450E900D9FD2F /* icon_settings.png */; };
@@ -147,6 +149,9 @@
 		1C48F41C163FAB3400C167FD /* CoreDataInsetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataInsetTableViewController.m; sourceTree = "<group>"; };
 		1C4980E8163FBC4800D94BB8 /* WordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordDetailViewController.h; sourceTree = "<group>"; };
 		1C4980E9163FBC4800D94BB8 /* WordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordDetailViewController.m; sourceTree = "<group>"; };
+		1C4DA883164672AC00EA07AF /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		1C4DA884164672AC00EA07AF /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		1C4DA8881646740500EA07AF /* SettingsKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsKey.h; sourceTree = "<group>"; };
 		1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_settings@2x.png"; sourceTree = "<group>"; };
 		1CECF8A7164450E900D9FD2F /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_settings.png; sourceTree = "<group>"; };
 		1CECF93C16457E8000D9FD2F /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -391,6 +396,9 @@
 				1C0403BD1641423C00F0B254 /* NewWordBookViewController.m */,
 				1C0403DD1642A72700F0B254 /* WordReviewViewController.h */,
 				1C0403DE1642A72700F0B254 /* WordReviewViewController.m */,
+				1C4DA883164672AC00EA07AF /* SettingsViewController.h */,
+				1C4DA884164672AC00EA07AF /* SettingsViewController.m */,
+				1C4DA8881646740500EA07AF /* SettingsKey.h */,
 				1C3A8DAA163E979100C893CA /* MainStoryboard.storyboard */,
 				1CEF6FBA163C19DE00D31F32 /* Supporting Files */,
 				1C3A8CB9163D50A600C893CA /* Libs */,
@@ -602,6 +610,7 @@
 				1CECF9CB16464C6300D9FD2F /* WordExplain.m in Sources */,
 				1CECF9CF16464C6300D9FD2F /* NewWord.m in Sources */,
 				1CECF9D316464C6400D9FD2F /* LookUpHistory.m in Sources */,
+				1C4DA885164672AC00EA07AF /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +644,7 @@
 				1CECF9CC16464C6300D9FD2F /* WordExplain.m in Sources */,
 				1CECF9D016464C6300D9FD2F /* NewWord.m in Sources */,
 				1CECF9D416464C6400D9FD2F /* LookUpHistory.m in Sources */,
+				1C4DA886164672AC00EA07AF /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
