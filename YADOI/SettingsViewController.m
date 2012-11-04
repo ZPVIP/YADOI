@@ -20,7 +20,11 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     // 从用户设置里面获取数据来显示界面
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.getPhoneticFromNetWorkSwitch.on = [defaults boolForKey:GET_PHONETIC_FROM_NETWORK];
