@@ -34,10 +34,11 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)setupFetchedRequestsController
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"NewWord"];
+    NSSortDescriptor *dateSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"addDate" ascending:YES];
     NSSortDescriptor *wordAsscendingSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"word.spell"
                                                                      ascending:YES
                                                                       selector:@selector(localizedCaseInsensitiveCompare:)];
-    request.sortDescriptors = @[wordAsscendingSortDescriptor];
+    request.sortDescriptors = @[dateSortDescriptor, wordAsscendingSortDescriptor];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.managedOjbectContext
                                                                           sectionNameKeyPath:@"addDateString"
