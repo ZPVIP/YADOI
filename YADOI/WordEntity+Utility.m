@@ -181,7 +181,6 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     dateCompents.minute = 59;
     dateCompents.second = 59;
     NSDate *nextReviewDate = [gregorCalendar dateFromComponents:dateCompents];
-    // TODO:看一下是否准确
     newWord.nextReviewDate = nextReviewDate;
     
     NSError *error = nil;

@@ -8,6 +8,7 @@
 
 #import "NewWord+Utility.h"
 #import "WordEntity.h"
+#import "SettingsKey.h"
 #import "DDLog.h"
 
 const static int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -21,13 +22,12 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"NewWord"];
-    // 过滤条件是明天之前需要复习的单词
+    // 过滤条件是:明天之前需要复习的单词
     NSCalendar *gregorianClander = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     unsigned dateUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
-    NSDateComponents *dateComponents = [gregorianClander components:dateUnits fromDate:[NSDate date]];
-    // FIXME:出错!!!!，时间没有设置对
-    dateComponents.day += 1;
-    NSDate *tomorrow = [gregorianClander dateFromComponents:dateComponents];
+    NSDateComponents *tomorrowDateComponents = [gregorianClander components:dateUnits fromDate:[NSDate date]];
+    tomorrowDateComponents.day += 1;
+    NSDate *tomorrow = [gregorianClander dateFromComponents:tomorrowDateComponents];
     request.predicate = [NSPredicate predicateWithFormat:@"nextReviewDate < %@", tomorrow];
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"nextReviewDate" ascending:YES];
@@ -41,11 +41,11 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
         return nil;
     }
     
-    // TODO:从用户设置中取词，现在预设为30
-    if ([matches count] <= 30) {
+    int dailyReviewWordNumber = [[NSUserDefaults standardUserDefaults] integerForKey:DAILY_REVIEW_WORD_NUMBER];
+    if ([matches count] <= dailyReviewWordNumber) {
         return matches;
     } else {
-        return [matches subarrayWithRange:NSMakeRange(0, 30)];
+        return [matches subarrayWithRange:NSMakeRange(0, dailyReviewWordNumber)];
     }
 }
 + (NSInteger)countOfNewWordWithConext:(NSManagedObjectContext *)managedObjectContext

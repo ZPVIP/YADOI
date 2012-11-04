@@ -15,6 +15,6 @@
 + (NSInteger)countOfNewWordWithConext:(NSManagedObjectContext *)managedObjectContext;
 // 根据单词的 rememberLevel，更新下次复习时间
 - (void)updateNextReviewDate;
-// 作为sectionTitle
+// 该单词加入单词本的时间的String，作为sectionTitle用
 - (NSString *)addDateString;
 @end

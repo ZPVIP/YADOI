@@ -50,13 +50,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.title = self.theWordEntity.spell;
     // 设置基本项
     self.wordSpellLabel.text = self.theWordEntity.spell;
-    NSString *phonetic = self.theWordEntity.phonetic;
-    if (phonetic != nil) {
-        self.phoneticLabel.text = [NSString stringWithFormat:@"[%@]", self.theWordEntity.phonetic];
-    } else {
-        self.phoneticLabel.text = nil;
-    }
-    
+    self.phoneticLabel.text = [self.theWordEntity stringForPhonetic];
     // 解释
     self.explainsTextView.text = [self.theWordEntity stringForDetailExplain];
     
