@@ -230,11 +230,12 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FnS-8w-NkH">
-                                                    <rect key="frame" x="222" y="8" width="78" height="29"/>
+                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FnS-8w-NkH">
+                                                    <rect key="frame" x="231" y="6" width="69" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                                    <state key="normal" title="Read">
+                                                    <inset key="contentEdgeInsets" minX="23" minY="11" maxX="23" maxY="12"/>
+                                                    <state key="normal" image="tts.png">
                                                         <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -638,6 +639,7 @@
         <image name="icon_search.png" width="32" height="24"/>
         <image name="icon_settings.png" width="30" height="30"/>
         <image name="icon_wordBook.png" width="32" height="24"/>
+        <image name="tts.png" width="46" height="46"/>
     </resources>
     <classes>
         <class className="CoreDataInsetTableViewController" superclassName="UIViewController">
@@ -673,9 +675,7 @@
         <class className="WordDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WordDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addToNewWordBook:" candidateClass="UIButton"/>
                 <relationship kind="action" name="readTheWord:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addToNewWordBookButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="explainsTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="phoneticLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sampleSentenceTextView" candidateClass="UITextView"/>
@@ -703,6 +703,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SF4-8x-aev"/>
+        <segue reference="8Bs-kr-NLE"/>
     </inferredMetricsTieBreakers>
 </document>
