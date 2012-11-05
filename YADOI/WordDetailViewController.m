@@ -42,79 +42,120 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	// Do any additional setup after loading the view
 }
 
-// 调整页面
 - (void)configureView
 {
     if (self.theWordEntity == nil) {
-        DDLogError(@"出错了，单词详细页面单词没有设置！");
+        DDLogError(@"出错了，单词没有设置");
         return;
     }
-    // 设置标题
-    self.title = self.theWordEntity.spell;
-    // 设置基本项
-    self.wordSpellLabel.text = self.theWordEntity.spell;
-    self.phoneticLabel.text = [self.theWordEntity stringForPhonetic];
-    // 解释
-    self.explainsTextView.text = [self.theWordEntity stringForDetailExplain];
     
-    // 例句
-    self.sampleSentenceTextView.text = [self.theWordEntity stringForSampleSentence];
-    
-    // 判断该单词是否加入生词本
-    BOOL isInNewWordBook = [self.theWordEntity isInTheNewWordBook];
-    NSString  *imageName = nil;
-    if (isInNewWordBook) {
+    // 右上角的加入单词本按钮
+    NSString *imageName = nil;
+    if ([self.theWordEntity isInTheNewWordBook]) {
         imageName = @"removeFromWordBook";
     } else {
-       imageName = @"addToWordBook";
+        imageName = @"addToWordBook";
     }
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName]
-                                                                  style:UIBarButtonItemStyleBordered
-                                                                 target:self
-                                                                 action:@selector(addToOrRemoveFromWordBook)];
-    self.navigationItem.rightBarButtonItem = barButton;
-}
+    
+    UIBarButtonItem *addToOrDeleteFromWordBookButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName]
+                                                                                        style:UIBarButtonItemStyleBordered
+                                                                                       target:self
+                                                                                       action:@selector(addToOrRemoveFromWordBook)];
+    self.navigationItem.rightBarButtonItem = addToOrDeleteFromWordBookButton;
+    
+    // 标题
+    self.title = self.theWordEntity.spell;
+    
+    // 单词本身
+    NSString *spell = self.theWordEntity.spell;
+    CGSize spellLabelSize = [spell sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:25]
+                              constrainedToSize:CGSizeMake(320, 30) lineBreakMode:NSLineBreakByCharWrapping];
+    UILabel *spellLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 20, spellLabelSize.width, spellLabelSize.height)];
+    spellLabel.text = spell;
+    spellLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
+    spellLabel.textColor = [UIColor colorWithRed:3/255.0 green:162/255.0 blue:62/255.0 alpha:1.0];
+    [self.scrollView addSubview:spellLabel];
+    //DDLogVerbose(@"spell Label frame :%@", NSStringFromCGRect(spellLabel.frame));
+    
+    // 发音按钮
+    UIButton *readButton = [[UIButton alloc] initWithFrame:CGRectMake(5 + spellLabelSize.width, 2, 69, 69)];
+    [readButton setImage:[UIImage imageNamed:@"tts.png"] forState:UIControlStateNormal];
+    readButton.imageEdgeInsets = UIEdgeInsetsMake(23, 23, 23, 23);
+    //DDLogVerbose(@"readButton Label frame: %@", NSStringFromCGRect(readButton.frame));
+    // 绑定事件
+    [readButton addTarget:self action:@selector(readTheWord:) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:readButton];
+    // 音标
+    NSString *phoneticString = [self.theWordEntity stringForPhonetic];
+    CGSize phoneticLabelSize = [phoneticString sizeWithFont:[UIFont fontWithName:@"Helvetica" size:18]
+                                          constrainedToSize:CGSizeMake(320, 30) lineBreakMode:NSLineBreakByCharWrapping];
+    UILabel *phoneticLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 50, phoneticLabelSize.width, phoneticLabelSize.height)];
+    phoneticLabel.text = phoneticString;
+    phoneticLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
+    phoneticLabel.textColor = [UIColor colorWithRed:155/255.0 green:105/255.0 blue:155/255.0 alpha:1.0];
+    [self.scrollView addSubview:phoneticLabel];
+    //DDLogVerbose(@"phonetic Label frame: %@", NSStringFromCGRect(phoneticLabel.frame));
 
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // 调整解释的高度
+    // 添加一条横线
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 320, 2)];
+    lineView.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0];
+    [self.scrollView addSubview:lineView];
+    
+    // 单词解释
     NSString *explainsString = [self.theWordEntity stringForDetailExplain];
-    CGSize explainSize = [explainsString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:18]
-                                    constrainedToSize:CGSizeMake(320, 220)];
-    // 例句的高度
-    NSString *sampleSentences = [self.theWordEntity stringForSampleSentence];
-    CGSize sentenceSize = [sampleSentences sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13]
-                                      constrainedToSize:CGSizeMake(320, 220)];
+    CGSize explainsSize = [explainsString sizeWithFont:[UIFont fontWithName:@"Helvetica" size:18]
+                                    constrainedToSize:CGSizeMake(295, 9999) lineBreakMode:NSLineBreakByCharWrapping];
+    //DDLogVerbose(@"explain size is %@", NSStringFromCGSize(explainsSize));
+    UITextView *explainsView = [[UITextView alloc] initWithFrame:CGRectMake(25, 82, 295, explainsSize.height/22 * 30)];
+    explainsView.text = explainsString;
+    explainsView.editable = NO;
+    explainsView.scrollEnabled = NO;
+    explainsView.font = [UIFont fontWithName:@"Helvetica" size:18];
+    //DDLogVerbose(@"explain frame is %@", NSStringFromCGRect(explainsView.frame));
+    [self.scrollView addSubview:explainsView];
     
-    CGFloat height = 0;
-    switch (indexPath.row) {
-        case 0:
-            height = 80;
-            break;
-        case 1:
-            height = explainSize.height + 20;
-            break;
-        case 2:
-            height = sentenceSize.height + 20;
-            break;
+    // 如果有例句，添加一条横线，然后是例句
+    if ([self.theWordEntity.sampleSentences count] != 0) {
+        // 相关例句Label
+        UILabel *sampleSentenceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 95 + explainsView.frame.size.height, 320, 25)];
+        sampleSentenceLabel.backgroundColor = [UIColor colorWithRed:217/255.0 green:236/255.0 blue:255/255.0 alpha:1.0];
+        sampleSentenceLabel.text = @"   相关例句";
+        sampleSentenceLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
+        [self.scrollView addSubview:sampleSentenceLabel];
+        //DDLogVerbose(@"secondLineview frame is :%@", NSStringFromCGRect(sampleSentenceLabel.frame));
+    
+        // 例句
+        NSString *sampleSentenceString = [self.theWordEntity stringForSampleSentence];
+        UITextView *sampleSentenceView = [[UITextView alloc]
+                                          initWithFrame:CGRectMake(0, 120 + explainsView.frame.size.height, 320, 20)];
+        sampleSentenceView.text = sampleSentenceString;
+        sampleSentenceView.editable = NO;
+        sampleSentenceView.scrollEnabled = NO;
+        sampleSentenceView.font = [UIFont fontWithName:@"Helvetica" size:15];
+        [self.scrollView addSubview:sampleSentenceView];
+        // 调整例句frame 两种调整UITextView 高度的方法，注意该种方法需要在 addSubView后才能使用。
+        CGRect sampleSentenceFrame = sampleSentenceView.frame;
+        sampleSentenceFrame.size.height = sampleSentenceView.contentSize.height;
+        sampleSentenceView.frame = sampleSentenceFrame;
+        //DDLogVerbose(@"sampleSentence frame is %@", NSStringFromCGRect(sampleSentenceView.frame));
+
+        // 最后调整下scrollView 大小，让其可以滚动
+        // 对 iPhone 5 做调整
+        CGRect scrollFrame;
+        CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        if (screenBounds.size.height == 568) {
+            scrollFrame = CGRectMake(0, 0, 320, 455);
+        } else {
+            scrollFrame = CGRectMake(0, 0, 320, 367);
+        }
+        self.scrollView.frame = scrollFrame;
+        [self.scrollView setContentSize:CGSizeMake(320, 120 + explainsView.frame.size.height + sampleSentenceView.frame.size.height)];
+        //DDLogVerbose(@"scroll frame is %@", NSStringFromCGRect(scrollFrame));
+        //DDLogVerbose(@"scroll contentsize is %@", NSStringFromCGSize(self.scrollView.contentSize));
     }
-    return height;
 }
 
-// TODO:自己定义Cell，要不格子线太多了。
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if ([self.theWordEntity.sampleSentences count] == 0) {
-        return 2;
-    } else {
-        return 3;
-    }
-    
-}
-
-- (IBAction)readTheWord:(UIButton *)sender {
+- (void)readTheWord:(UIButton *)sender {
     NSString *wordSpell = self.theWordEntity.spell;
     // 取得发音地址
     NSString *requestString = [NSString stringWithFormat:@"http://translate.google.cn/translate_tts?ie=UTF-8&q=%@&tl=en", wordSpell];
@@ -210,10 +251,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 - (void)viewDidUnload {
-    [self setWordSpellLabel:nil];
-    [self setPhoneticLabel:nil];
-    [self setExplainsTextView:nil];
-    [self setSampleSentenceTextView:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 

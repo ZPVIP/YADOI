@@ -9,16 +9,9 @@
 #import <UIKit/UIKit.h>
 @class WordEntity;
 
-@interface WordDetailViewController : UITableViewController
-@property (weak, nonatomic) IBOutlet UILabel *wordSpellLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneticLabel;
+@interface WordDetailViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextView *explainsTextView;
-
-@property (weak, nonatomic) IBOutlet UITextView *sampleSentenceTextView;
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) WordEntity *theWordEntity;
 
-
-- (IBAction)readTheWord:(UIButton *)sender;
 @end
