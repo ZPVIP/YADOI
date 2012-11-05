@@ -27,16 +27,16 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super viewWillAppear:animated];
     // 从用户设置里面获取数据来显示界面
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.getPhoneticFromNetWorkSwitch.on = [defaults boolForKey:GET_PHONETIC_FROM_NETWORK];
+    self.reviewWordOrderedSwitch.on = [defaults boolForKey:REVIEW_WORD_ORDERED];
     self.onlyUseLocalDicSwitch.on = [defaults boolForKey:ONLY_USE_LOCAL_DIC];
     self.dailyReviewWordNumberLabel.text = [NSString stringWithFormat:@"%d个", [defaults integerForKey:DAILY_REVIEW_WORD_NUMBER]];
 }
 
-- (IBAction)getPhoneticFromNetWorkChanged:(UISwitch *)sender {
+- (IBAction)reviewWordOrderedChanged:(UISwitch *)sender {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:sender.isOn forKey:GET_PHONETIC_FROM_NETWORK];
+    [userDefaults setBool:sender.isOn forKey:REVIEW_WORD_ORDERED];
     [userDefaults synchronize];
-    DDLogVerbose(@"用户修改从网络获取语音的设置，设置为:%@", sender.isOn ? @"YES" : @"NO");
+    DDLogVerbose(@"用户修改复习时单词有序的设置，设置为:%@", sender.isOn ? @"YES" : @"NO");
 }
 
 - (IBAction)onlyUseLocalDicChanged:(UISwitch *)sender {
@@ -47,7 +47,7 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 - (void)viewDidUnload {
-    [self setGetPhoneticFromNetWorkSwitch:nil];
+    [self setReviewWordOrderedSwitch:nil];
     [self setOnlyUseLocalDicSwitch:nil];
     [self setDailyReviewWordNumberLabel:nil];
     [super viewDidUnload];

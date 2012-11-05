@@ -9,7 +9,7 @@
 #ifndef YADOI_settingsKey_h
 #define YADOI_settingsKey_h
 
-#define GET_PHONETIC_FROM_NETWORK @"getPhoneticFromNetWork"
+#define REVIEW_WORD_ORDERED @"reviewWordOrdered"
 #define ONLY_USE_LOCAL_DIC @"onlyUseLocalDic"
 #define DAILY_REVIEW_WORD_NUMBER @"reviewWordNumber"
 

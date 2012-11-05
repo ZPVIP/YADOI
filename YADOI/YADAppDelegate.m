@@ -33,7 +33,7 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     if ([self isFirstLaunch]) {
         DDLogVerbose(@"是第一次启动，预置用户设置项");
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:YES forKey:GET_PHONETIC_FROM_NETWORK];
+        [defaults setBool:YES forKey:REVIEW_WORD_ORDERED];
         [defaults setBool:NO forKey:ONLY_USE_LOCAL_DIC];
         [defaults setInteger:30 forKey:DAILY_REVIEW_WORD_NUMBER];
         [defaults synchronize];
