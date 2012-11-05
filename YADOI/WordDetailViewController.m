@@ -15,6 +15,7 @@
 #import "ASIHTTPRequest.h"
 #import "ASIHTTPRequestDelegate.h"
 #import "ASIDownloadCache.h"
+#import "Reachability.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -169,6 +170,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     // 发音是不会变的
     [self.request setCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];
     [self.request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+    // 设置超时重试次数
+    [self.request setNumberOfTimesToRetryOnTimeout:2];
     
     // 将自己设为request的delegate
     self.request.delegate = self;
@@ -200,7 +203,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     DDLogError(@"连接超时，未能取得数据");
-    // TODO:给出相关提示？
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"发音失败"
+                                                            message:@"可能是网络无连接，或者数据错误"
+                                                           delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+    }    
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
