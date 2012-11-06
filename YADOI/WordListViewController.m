@@ -15,7 +15,8 @@
 static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 @interface WordListViewController ()
-
+@property (nonatomic, strong) NSArray *fetchedObjects;
+@property (nonatomic, strong) NSArray *filteredObjects;
 @end
 
 @implementation WordListViewController
@@ -38,7 +39,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     }
 }
 
-- (void)setupFetchedRequestsController
+- (void)setupFetchedObjects
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"WordEntity"];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"spell"
@@ -50,13 +51,14 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
                                                                         managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
+    self.fetchedObjects = self.fetchedResultsController.fetchedObjects;
 }
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     if (_managedObjectContext != managedObjectContext) {
         _managedObjectContext = managedObjectContext;
-        [self setupFetchedRequestsController];
+        [self setupFetchedObjects];
     }
 }
 
@@ -71,7 +73,12 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"WordEntityCell"];
     }
     
-    WordEntity *wordEntity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    WordEntity *wordEntity = nil;
+    if (tableView == self.tableView) {
+        wordEntity = [self.fetchedObjects objectAtIndex:indexPath.row];
+    } else {
+        wordEntity = [self.filteredObjects objectAtIndex:indexPath.row];
+    }
     cell.textLabel.text = wordEntity.spell;
     // 只显示Explain的第一条结果
     cell.detailTextLabel.text = [wordEntity stringForShortExplain];
@@ -79,6 +86,19 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     return cell;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == self.tableView) {
+        return [self.fetchedObjects count];
+    } else {
+        return [self.filteredObjects count];
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 #pragma mark -
 #pragma mark UISearchDisplayDelegate
 // 开始搜索时，显示的是searchDisplayController.searchResultsTableView,它与self.tableView共用DataSource和Delegate，
@@ -86,29 +106,15 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 // 先Quick and Dirty 地跑起来
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@",searchString];
-    NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
-    if (error != nil) {
-        DDLogError(@"执行这个fetchRequest时出错:%@", self.fetchedResultsController.fetchRequest);
-    }
-    DDLogVerbose(@"fetchRequest.predicate is (%@)", self.fetchedResultsController.fetchRequest.predicate);
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@", searchString];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"spell"
+                                                                     ascending:YES
+                                                                      selector:@selector(localizedCaseInsensitiveCompare:)];
+    self.filteredObjects = [self.fetchedObjects filteredArrayUsingPredicate:predicate];
+    self.filteredObjects = [self.filteredObjects sortedArrayUsingDescriptors:@[sortDescriptor]];
     return YES;
 }
 
-#pragma mark -
-#pragma mark UISearchBarDelegate
-// 这时显示的是self.tableView,需要把 fetchRequest改回来。
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    self.fetchedResultsController.fetchRequest.predicate = nil;
-    NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
-    if (error != nil) {
-        DDLogError(@"执行这个fetchRequest时出错:%@", self.fetchedResultsController.fetchRequest);
-    }
-    DDLogVerbose(@"fetchRequest.predicate is (%@)",self.fetchedResultsController.fetchRequest.predicate);
-}
 
 #pragma mark -
 #pragma mark Segue
@@ -119,15 +125,14 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
         UITableViewCell *senderCell = sender;
         DDLogVerbose(@"segue from %@",(senderCell.superview == self.tableView) ?
                      @"self.tableView" : @"self.searchDisplayController.searchResultsTableView");
-        NSIndexPath *indexPath = nil;
+        WordEntity *wordEntity = nil;
         if (senderCell.superview == self.tableView) {
-            indexPath = [self.tableView indexPathForSelectedRow];
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            wordEntity = [self.fetchedObjects objectAtIndex:indexPath.row];
         } else {
-            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            wordEntity = [self.filteredObjects objectAtIndex:indexPath.row];
         }
-        
-        DDLogVerbose(@"the indexPath is %@: ", indexPath);
-        WordEntity *wordEntity = [self.fetchedResultsController objectAtIndexPath:indexPath];
         WordDetailViewController *detailVC = segue.destinationViewController;
         detailVC.theWordEntity = wordEntity;
     }
