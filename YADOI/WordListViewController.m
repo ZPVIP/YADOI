@@ -32,6 +32,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // 相当于 TableViewController 的 clearSelectionOnViewWillAppear 效果。
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     if (indexPath != nil) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -41,6 +42,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 - (void)setupFetchedRequestsController
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"WordEntity"];
+    request.fetchBatchSize = 20;
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"spell"
                                                                      ascending:YES
                                                                       selector:@selector(localizedCaseInsensitiveCompare:)];
@@ -49,14 +51,15 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:nil
-                                                                                   cacheName:nil];
+                                                                                   cacheName:@"All"];
 }
+
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     if (_managedObjectContext != managedObjectContext) {
         _managedObjectContext = managedObjectContext;
-        [self setupFetchedRequestsController];
+       [self setupFetchedRequestsController];
     }
 }
 
@@ -86,13 +89,14 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 // 先Quick and Dirty 地跑起来
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@",searchString];
-    NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
-    if (error != nil) {
-        DDLogError(@"执行这个fetchRequest时出错:%@", self.fetchedResultsController.fetchRequest);
-    }
-    DDLogVerbose(@"fetchRequest.predicate is (%@)", self.fetchedResultsController.fetchRequest.predicate);
+    NSFetchRequest *fetchRequest = self.fetchedResultsController.fetchRequest;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.fetchLimit = 50;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@",searchString];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc]
+                                     initWithFetchRequest:fetchRequest
+                                     managedObjectContext:self.managedObjectContext
+                                     sectionNameKeyPath:nil cacheName:searchString];
     return YES;
 }
 
@@ -101,13 +105,14 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 // 这时显示的是self.tableView,需要把 fetchRequest改回来。
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    self.fetchedResultsController.fetchRequest.predicate = nil;
-    NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
-    if (error != nil) {
-        DDLogError(@"执行这个fetchRequest时出错:%@", self.fetchedResultsController.fetchRequest);
-    }
-    DDLogVerbose(@"fetchRequest.predicate is (%@)",self.fetchedResultsController.fetchRequest.predicate);
+    NSFetchRequest *fetchRequest = self.fetchedResultsController.fetchRequest;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.fetchLimit = 0;
+    fetchRequest.predicate = nil;
+    self.fetchedResultsController = [[NSFetchedResultsController alloc]
+                                     initWithFetchRequest:fetchRequest
+                                     managedObjectContext:self.managedObjectContext
+                                     sectionNameKeyPath:nil cacheName:@"All"];
 }
 
 #pragma mark -
