@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1591" y="-271"/>
         </scene>
-        <!--New Word Book View Controller - 所有单词-->
+        <!--New Word Book View Controller - 生词本-->
         <scene sceneID="7xD-hP-jEj">
             <objects>
                 <tableViewController id="X1m-gY-z2x" customClass="NewWordBookViewController" sceneMemberID="viewController">
@@ -41,11 +41,11 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewWordCell" textLabel="Yrn-AG-DMA" detailTextLabel="5sK-zi-49v" style="IBUITableViewCellStyleSubtitle" id="TCQ-HV-3nv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewWordCell" textLabel="Yrn-AG-DMA" detailTextLabel="5sK-zi-49v" style="IBUITableViewCellStyleSubtitle" id="TCQ-HV-3nv">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yrn-AG-DMA">
@@ -75,16 +75,28 @@
                             <outlet property="delegate" destination="X1m-gY-z2x" id="79h-HU-ldZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="所有单词" id="Yhz-tV-Fbx">
+                    <navigationItem key="navigationItem" title="生词本" id="Yhz-tV-Fbx">
                         <barButtonItem key="leftBarButtonItem" title="复习" id="Kkd-lX-Vtl">
                             <connections>
                                 <segue destination="oBe-UC-Zg2" kind="push" identifier="reviewWordBook" id="Tmx-hF-6ab"/>
                             </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dzg-8S-uUH">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="按日期序"/>
+                                <segment title="按字母序"/>
+                            </segments>
+                            <connections>
+                                <action selector="sortOrederChanged:" destination="X1m-gY-z2x" eventType="valueChanged" id="iKy-5U-8jf"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="编辑" id="cKc-1l-21Q"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="W1B-WM-Jkt" id="4ot-9a-Upp"/>
+                        <outlet property="sortOrderSegmentControl" destination="dzg-8S-uUH" id="6bT-j5-YZ3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkQ-LJ-OOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -577,11 +589,14 @@
         </class>
         <class className="NewWordBookViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewWordBookViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sortOrederChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sortOrderSegmentControl" candidateClass="UISegmentedControl"/>
+            </relationships>
         </class>
         <class className="SettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="getPhoneticFromNetWorkChanged:" candidateClass="UISwitch"/>
                 <relationship kind="action" name="onlyUseLocalDicChanged:" candidateClass="UISwitch"/>
                 <relationship kind="action" name="reviewWordOrderedChanged:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="dailyReviewWordNumberLabel" candidateClass="UILabel"/>

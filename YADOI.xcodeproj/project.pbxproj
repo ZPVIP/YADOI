@@ -20,6 +20,14 @@
 		1C0403E01642A72700F0B254 /* WordReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403DE1642A72700F0B254 /* WordReviewViewController.m */; };
 		1C0403E31642D53B00F0B254 /* NewWord+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403E21642D53B00F0B254 /* NewWord+Utility.m */; };
 		1C0403E41642D53B00F0B254 /* NewWord+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403E21642D53B00F0B254 /* NewWord+Utility.m */; };
+		1C0A25C41648E45100BC781A /* addToWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C01648E45100BC781A /* addToWordBook.png */; };
+		1C0A25C51648E45100BC781A /* addToWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C01648E45100BC781A /* addToWordBook.png */; };
+		1C0A25C61648E45100BC781A /* addToWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C11648E45100BC781A /* addToWordBook@2x.png */; };
+		1C0A25C71648E45100BC781A /* addToWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C11648E45100BC781A /* addToWordBook@2x.png */; };
+		1C0A25C81648E45100BC781A /* removeFromWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C21648E45100BC781A /* removeFromWordBook.png */; };
+		1C0A25C91648E45100BC781A /* removeFromWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C21648E45100BC781A /* removeFromWordBook.png */; };
+		1C0A25CA1648E45100BC781A /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C31648E45100BC781A /* removeFromWordBook@2x.png */; };
+		1C0A25CB1648E45100BC781A /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C31648E45100BC781A /* removeFromWordBook@2x.png */; };
 		1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
 		1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
 		1C3A8CA9163D4FE100C893CA /* WordExplain+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Utility.m */; };
@@ -47,14 +55,6 @@
 		1C4DA886164672AC00EA07AF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA884164672AC00EA07AF /* SettingsViewController.m */; };
 		1C4DA88B164697AD00EA07AF /* DailyReviewWordNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA88A164697AC00EA07AF /* DailyReviewWordNumberViewController.m */; };
 		1C4DA88C164697AD00EA07AF /* DailyReviewWordNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DA88A164697AC00EA07AF /* DailyReviewWordNumberViewController.m */; };
-		1C4DA8911646C5A400EA07AF /* addToWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88D1646C5A400EA07AF /* addToWordBook.png */; };
-		1C4DA8921646C5A400EA07AF /* addToWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88D1646C5A400EA07AF /* addToWordBook.png */; };
-		1C4DA8931646C5A400EA07AF /* addToWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */; };
-		1C4DA8941646C5A400EA07AF /* addToWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */; };
-		1C4DA8951646C5A400EA07AF /* removeFromWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */; };
-		1C4DA8961646C5A400EA07AF /* removeFromWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */; };
-		1C4DA8971646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */; };
-		1C4DA8981646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */; };
 		1C4DA8AF1646EB7E00EA07AF /* wordDeleted.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */; };
 		1C4DA8B01646EB7E00EA07AF /* wordDeleted.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */; };
 		1C4DA8B11646EB7E00EA07AF /* wordDeleted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */; };
@@ -145,6 +145,10 @@
 		1C0403DE1642A72700F0B254 /* WordReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordReviewViewController.m; path = ../WordReviewViewController.m; sourceTree = "<group>"; };
 		1C0403E11642D53B00F0B254 /* NewWord+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewWord+Utility.h"; sourceTree = "<group>"; };
 		1C0403E21642D53B00F0B254 /* NewWord+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NewWord+Utility.m"; sourceTree = "<group>"; };
+		1C0A25C01648E45100BC781A /* addToWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToWordBook.png; sourceTree = "<group>"; };
+		1C0A25C11648E45100BC781A /* addToWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addToWordBook@2x.png"; sourceTree = "<group>"; };
+		1C0A25C21648E45100BC781A /* removeFromWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeFromWordBook.png; sourceTree = "<group>"; };
+		1C0A25C31648E45100BC781A /* removeFromWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "removeFromWordBook@2x.png"; sourceTree = "<group>"; };
 		1C3A8C94163D4FE100C893CA /* WordSampleSentence+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordSampleSentence+Utility.h"; sourceTree = "<group>"; };
 		1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordSampleSentence+Utility.m"; sourceTree = "<group>"; };
 		1C3A8C96163D4FE100C893CA /* WordExplain+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordExplain+Utility.h"; sourceTree = "<group>"; };
@@ -174,10 +178,6 @@
 		1C4DA8881646740500EA07AF /* SettingsKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsKey.h; sourceTree = "<group>"; };
 		1C4DA889164697AC00EA07AF /* DailyReviewWordNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyReviewWordNumberViewController.h; sourceTree = "<group>"; };
 		1C4DA88A164697AC00EA07AF /* DailyReviewWordNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyReviewWordNumberViewController.m; sourceTree = "<group>"; };
-		1C4DA88D1646C5A400EA07AF /* addToWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToWordBook.png; sourceTree = "<group>"; };
-		1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addToWordBook@2x.png"; sourceTree = "<group>"; };
-		1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeFromWordBook.png; sourceTree = "<group>"; };
-		1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "removeFromWordBook@2x.png"; sourceTree = "<group>"; };
 		1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wordDeleted.png; sourceTree = "<group>"; };
 		1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordDeleted@2x.png"; sourceTree = "<group>"; };
 		1C4DA8AD1646EB7D00EA07AF /* wordAdded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wordAdded.png; sourceTree = "<group>"; };
@@ -283,10 +283,10 @@
 				1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */,
 				1C4DA8AD1646EB7D00EA07AF /* wordAdded.png */,
 				1C4DA8AE1646EB7E00EA07AF /* wordAdded@2x.png */,
-				1C4DA88D1646C5A400EA07AF /* addToWordBook.png */,
-				1C4DA88E1646C5A400EA07AF /* addToWordBook@2x.png */,
-				1C4DA88F1646C5A400EA07AF /* removeFromWordBook.png */,
-				1C4DA8901646C5A400EA07AF /* removeFromWordBook@2x.png */,
+				1C0A25C01648E45100BC781A /* addToWordBook.png */,
+				1C0A25C11648E45100BC781A /* addToWordBook@2x.png */,
+				1C0A25C21648E45100BC781A /* removeFromWordBook.png */,
+				1C0A25C31648E45100BC781A /* removeFromWordBook@2x.png */,
 				1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */,
 				1CECF8A7164450E900D9FD2F /* icon_settings.png */,
 				1C0403CD164287C600F0B254 /* icon_wordBook.png */,
@@ -571,15 +571,15 @@
 				1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */,
 				1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */,
 				1CECF9BF16464BAC00D9FD2F /* YAD.sqlite in Resources */,
-				1C4DA8911646C5A400EA07AF /* addToWordBook.png in Resources */,
-				1C4DA8931646C5A400EA07AF /* addToWordBook@2x.png in Resources */,
-				1C4DA8951646C5A400EA07AF /* removeFromWordBook.png in Resources */,
-				1C4DA8971646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */,
 				1C4DA8AF1646EB7E00EA07AF /* wordDeleted.png in Resources */,
 				1C4DA8B11646EB7E00EA07AF /* wordDeleted@2x.png in Resources */,
 				1C4DA8B31646EB7E00EA07AF /* wordAdded.png in Resources */,
 				1C4DA8B51646EB7E00EA07AF /* wordAdded@2x.png in Resources */,
 				1C4DA8BC1647965A00EA07AF /* tts.png in Resources */,
+				1C0A25C41648E45100BC781A /* addToWordBook.png in Resources */,
+				1C0A25C61648E45100BC781A /* addToWordBook@2x.png in Resources */,
+				1C0A25C81648E45100BC781A /* removeFromWordBook.png in Resources */,
+				1C0A25CA1648E45100BC781A /* removeFromWordBook@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,15 +592,15 @@
 				1CECF8A9164450E900D9FD2F /* icon_settings@2x.png in Resources */,
 				1CECF8AB164450E900D9FD2F /* icon_settings.png in Resources */,
 				1CECF9C016464BAC00D9FD2F /* YAD.sqlite in Resources */,
-				1C4DA8921646C5A400EA07AF /* addToWordBook.png in Resources */,
-				1C4DA8941646C5A400EA07AF /* addToWordBook@2x.png in Resources */,
-				1C4DA8961646C5A400EA07AF /* removeFromWordBook.png in Resources */,
-				1C4DA8981646C5A400EA07AF /* removeFromWordBook@2x.png in Resources */,
 				1C4DA8B01646EB7E00EA07AF /* wordDeleted.png in Resources */,
 				1C4DA8B21646EB7E00EA07AF /* wordDeleted@2x.png in Resources */,
 				1C4DA8B41646EB7E00EA07AF /* wordAdded.png in Resources */,
 				1C4DA8B61646EB7E00EA07AF /* wordAdded@2x.png in Resources */,
 				1C4DA8BD1647965A00EA07AF /* tts.png in Resources */,
+				1C0A25C51648E45100BC781A /* addToWordBook.png in Resources */,
+				1C0A25C71648E45100BC781A /* addToWordBook@2x.png in Resources */,
+				1C0A25C91648E45100BC781A /* removeFromWordBook.png in Resources */,
+				1C0A25CB1648E45100BC781A /* removeFromWordBook@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

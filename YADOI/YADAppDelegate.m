@@ -52,7 +52,7 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     // 生词本页面
     UINavigationController *wordBookNVC = [rootViewController.viewControllers objectAtIndex:1];
     NewWordBookViewController *wordBookVC = (NewWordBookViewController *)wordBookNVC.topViewController;
-    wordBookVC.managedOjbectContext = self.managedObjectContext;
+    wordBookVC.managedObjectContext = self.managedObjectContext;
     
     return YES;
 }

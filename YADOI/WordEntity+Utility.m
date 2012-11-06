@@ -225,4 +225,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
 }
 
+- (NSString *)firstLetter
+{
+    return [[self.spell substringToIndex:1] uppercaseString];
+}
 @end

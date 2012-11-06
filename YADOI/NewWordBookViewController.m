@@ -16,7 +16,11 @@
 const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface NewWordBookViewController ()
-
+// 排序及SectionTitle 显示
+typedef enum {
+    kOrderByDate = 0,
+    kOrderByFirstLetter
+} WordSortOrder;
 @end
 
 @implementation NewWordBookViewController
@@ -33,25 +37,57 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)setupFetchedRequestsController
 {
+    // 默认是按日期排序，没有sectionIndex
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"NewWord"];
-    NSSortDescriptor *dateSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"addDate" ascending:NO];
-    NSSortDescriptor *wordAsscendingSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"word.spell"
-                                                                     ascending:YES
-                                                                      selector:@selector(localizedCaseInsensitiveCompare:)];
-    request.sortDescriptors = @[dateSortDescriptor, wordAsscendingSortDescriptor];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                        managedObjectContext:self.managedOjbectContext
-                                                                          sectionNameKeyPath:@"addDateString"
-                                                                                   cacheName:nil];
-
+    [self changeOrderTo:kOrderByDate withRequest:request];
 }
 
-- (void)setManagedOjbectContext:(NSManagedObjectContext *)managedOjbectContext
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    if (_managedOjbectContext != managedOjbectContext) {
-        _managedOjbectContext = managedOjbectContext;
+    if (_managedObjectContext != managedObjectContext) {
+        _managedObjectContext = managedObjectContext;
         [self setupFetchedRequestsController];
     }
+}
+
+- (IBAction)sortOrederChanged:(UISegmentedControl *)sender {
+    NSInteger selectedIndex = sender.selectedSegmentIndex;
+    // 按日期序
+    if (selectedIndex == 0) {
+        [self changeOrderTo:kOrderByDate withRequest:self.fetchedResultsController.fetchRequest];
+    } else {
+        [self changeOrderTo:kOrderByFirstLetter withRequest:self.fetchedResultsController.fetchRequest];
+    }
+}
+
+// 修改列表中的单词排序。但是不会修改 NSPredicate，注意会修改self.fetchedRequestController.
+- (void)changeOrderTo:(WordSortOrder)wordSortOrder withRequest:(NSFetchRequest *)fetchRequest
+{
+    static NSSortDescriptor *dateSortDescriptor = nil;
+    static NSSortDescriptor *wordFirLetterSortDescriptor = nil;
+    if (dateSortDescriptor == nil) {
+        dateSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"addDate" ascending:NO];
+    }
+    if (wordFirLetterSortDescriptor == nil) {
+        wordFirLetterSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"word.spell"
+                                                                    ascending:YES
+                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
+    }
+    
+    NSString *sectionNameKeyPath = nil;
+    if (wordSortOrder == kOrderByDate) {
+        fetchRequest.sortDescriptors = @[dateSortDescriptor,wordFirLetterSortDescriptor];
+        sectionNameKeyPath = @"addDateString";
+        DDLogVerbose(@"生词本页面改成按日期排序");
+    } else if (wordSortOrder == kOrderByFirstLetter){
+        fetchRequest.sortDescriptors = @[wordFirLetterSortDescriptor];
+        sectionNameKeyPath = @"word.firstLetter";
+        DDLogVerbose(@"生词本页面改成按首字母排序");
+    }
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                        managedObjectContext:self.managedObjectContext
+                                                                          sectionNameKeyPath:sectionNameKeyPath cacheName:nil];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -80,7 +116,6 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     NewWord *newWord = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = newWord.word.spell;
     cell.detailTextLabel.text = [newWord.word stringForShortExplain];
-    
     return cell;
 }
 
@@ -95,10 +130,10 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NewWord *theNewWord = [self.fetchedResultsController objectAtIndexPath:indexPath];
         NSString *spell = theNewWord.word.spell; // 为删除日志用
-        [self.managedOjbectContext deleteObject:theNewWord];
+        [self.managedObjectContext deleteObject:theNewWord];
         
         NSError *error = nil;
-        if (![self.managedOjbectContext save:&error] || error != nil) {
+        if (![self.managedObjectContext save:&error] || error != nil) {
             DDLogError(@"从生词本删除 %@ 失败,%@,%@", spell, [error localizedDescription], [error localizedFailureReason]);
         } else {
             DDLogVerbose(@"从生词本删除 %@ 成功", spell);
@@ -109,12 +144,23 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 // 没有sectionIndex
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    return nil;
+    // 日期排序时没有Index
+    NSMutableArray *sectionIndex = nil;
+    if (self.sortOrderSegmentControl.selectedSegmentIndex == 0) {
+         return nil;
+    } else if (self.sortOrderSegmentControl.selectedSegmentIndex == 1 && [self numberOfSectionsInTableView:tableView] > 2) {
+        return [self.fetchedResultsController sectionIndexTitles];
+    }
+    return sectionIndex;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
-    return 0;
+    if ([self sectionIndexTitlesForTableView:tableView] != nil) {
+        return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
+    } else {
+        return 0;
+    }
 }
 
 // 搜索功能 和 WordListViewController 相似
@@ -161,15 +207,19 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
         detailVC.theWordEntity = newWord.word;
     } else if ([segue.identifier isEqualToString:@"reviewWordBook"]){
         // 复习生词 取得要复习的生词
-        NSArray *wordsToReview = [NewWord todaysReviewWordsWithContext:self.managedOjbectContext];
+        NSArray *wordsToReview = [NewWord todaysReviewWordsWithContext:self.managedObjectContext];
         WordReviewViewController *reviewVC = segue.destinationViewController;
         // 如果单词本没有单词，则将其置 nil 以与今天已经复习完区别开
         // 同时需要注意的是，如果执行搜索时出错，那wordsToReview也是nil;
-        if ([NewWord countOfNewWordWithConext:self.managedOjbectContext] == 0) {
+        if ([NewWord countOfNewWordWithConext:self.managedObjectContext] == 0) {
             reviewVC.wordsToReview = nil;
         } else {
             reviewVC.wordsToReview = wordsToReview;
         }
     }
+}
+- (void)viewDidUnload {
+    [self setSortOrderSegmentControl:nil];
+    [super viewDidUnload];
 }
 @end
