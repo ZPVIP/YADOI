@@ -43,6 +43,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"WordEntity"];
     request.fetchBatchSize = 20;
+    request.fetchLimit = 0;
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"spell"
                                                                      ascending:YES
                                                                       selector:@selector(localizedCaseInsensitiveCompare:)];
@@ -105,14 +106,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 // 这时显示的是self.tableView,需要把 fetchRequest改回来。
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    NSFetchRequest *fetchRequest = self.fetchedResultsController.fetchRequest;
-    fetchRequest.fetchBatchSize = 20;
-    fetchRequest.fetchLimit = 0;
-    fetchRequest.predicate = nil;
-    self.fetchedResultsController = [[NSFetchedResultsController alloc]
-                                     initWithFetchRequest:fetchRequest
-                                     managedObjectContext:self.managedObjectContext
-                                     sectionNameKeyPath:nil cacheName:@"All"];
+    [self setupFetchedRequestsController];
 }
 
 #pragma mark -
