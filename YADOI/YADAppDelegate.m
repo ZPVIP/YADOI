@@ -12,6 +12,7 @@
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 #import "WordEntity.h"
+#import "NewWord+Utility.h"
 #import "WordListViewController.h"
 #import "NewWordBookViewController.h"
 #import "SettingsKey.h"
@@ -36,6 +37,9 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
         [defaults setBool:YES forKey:REVIEW_WORD_ORDERED];
         [defaults setBool:NO forKey:ONLY_USE_LOCAL_DIC];
         [defaults setInteger:30 forKey:DAILY_REVIEW_WORD_NUMBER];
+        // 设置为今天还没有复习单词，具体见SettingsKey.h
+        [defaults setObject:@{[NewWord dateFormattedString:[NSDate date]]:[NSNumber numberWithInt:0]}
+                     forKey:TODAY_ALREADAY_REVIEWED_NUMBER];
         [defaults synchronize];
     } else {
         DDLogVerbose(@"不是第一次启动了，使用用户设置的数据");

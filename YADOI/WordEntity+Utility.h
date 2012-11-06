@@ -27,4 +27,6 @@
 - (void)addToTheNewWordBook;
 // 将自己从单词本中删除
 - (void)removeFromWordBook;
+// 单词发音地址
++ (NSURL *)ttsURLForWord: (NSString*)word;
 @end

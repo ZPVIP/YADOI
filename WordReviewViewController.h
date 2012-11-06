@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *wordSpellLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordPhoneticLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *displayExplainImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *wordExplainTextView;
 
 

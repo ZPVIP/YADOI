@@ -98,7 +98,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (NSString *)stringForDetailExplain
 {
     NSSet *explains = self.explains;
-    DDLogVerbose(@"explains count is :%d",[explains count]);
     if ([explains count] == 0) {
         return nil;
     }
@@ -114,7 +113,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (NSString *)stringForSampleSentence
 {
     NSSet *sampleSentences = self.sampleSentences;
-    DDLogVerbose(@"sampleSentence count is : %d", [sampleSentences count]);
     if ([sampleSentences count] == 0) {
         return nil;
     }
@@ -228,5 +226,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (NSString *)firstLetter
 {
     return [[self.spell substringToIndex:1] uppercaseString];
+}
+
++ (NSURL *)ttsURLForWord:(NSString *)word
+{
+    NSString *requestString = [NSString stringWithFormat:@"http://translate.google.cn/translate_tts?ie=UTF-8&q=%@&tl=en", word];
+    NSURL *audioURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    DDLogVerbose(@"单词发音地址是:%@", audioURL);
+    return audioURL;
 }
 @end

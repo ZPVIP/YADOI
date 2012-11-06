@@ -12,5 +12,7 @@
 #define REVIEW_WORD_ORDERED @"reviewWordOrdered"
 #define ONLY_USE_LOCAL_DIC @"onlyUseLocalDic"
 #define DAILY_REVIEW_WORD_NUMBER @"reviewWordNumber"
+// 用来记录今天已经复习了多少个单词，是一个Dictionary,键是今天的日期，值是复习了多少个
+#define TODAY_ALREADAY_REVIEWED_NUMBER @"todayAlreadyReviewedNumber"
 
 #endif

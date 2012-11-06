@@ -14,8 +14,6 @@
 		1C0403CC1642879800F0B254 /* icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403CA1642879800F0B254 /* icon_search@2x.png */; };
 		1C0403CF164287C600F0B254 /* icon_wordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403CD164287C600F0B254 /* icon_wordBook.png */; };
 		1C0403D0164287C600F0B254 /* icon_wordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403CE164287C600F0B254 /* icon_wordBook@2x.png */; };
-		1C0403DB16429A0600F0B254 /* displayExplain.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403D916429A0500F0B254 /* displayExplain.png */; };
-		1C0403DC16429A0600F0B254 /* displayExplain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403DA16429A0500F0B254 /* displayExplain@2x.png */; };
 		1C0403DF1642A72700F0B254 /* WordReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403DE1642A72700F0B254 /* WordReviewViewController.m */; };
 		1C0403E01642A72700F0B254 /* WordReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403DE1642A72700F0B254 /* WordReviewViewController.m */; };
 		1C0403E31642D53B00F0B254 /* NewWord+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403E21642D53B00F0B254 /* NewWord+Utility.m */; };
@@ -28,6 +26,18 @@
 		1C0A25C91648E45100BC781A /* removeFromWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C21648E45100BC781A /* removeFromWordBook.png */; };
 		1C0A25CA1648E45100BC781A /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C31648E45100BC781A /* removeFromWordBook@2x.png */; };
 		1C0A25CB1648E45100BC781A /* removeFromWordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C31648E45100BC781A /* removeFromWordBook@2x.png */; };
+		1C0A25D2164907B100BC781A /* alreadyReviewAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CC164907AF00BC781A /* alreadyReviewAll.png */; };
+		1C0A25D3164907B100BC781A /* alreadyReviewAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CC164907AF00BC781A /* alreadyReviewAll.png */; };
+		1C0A25D4164907B100BC781A /* alreadyReviewAll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CD164907AF00BC781A /* alreadyReviewAll@2x.png */; };
+		1C0A25D5164907B100BC781A /* alreadyReviewAll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CD164907AF00BC781A /* alreadyReviewAll@2x.png */; };
+		1C0A25D6164907B100BC781A /* noNewWordWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CE164907AF00BC781A /* noNewWordWarning.png */; };
+		1C0A25D7164907B100BC781A /* noNewWordWarning.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CE164907AF00BC781A /* noNewWordWarning.png */; };
+		1C0A25D8164907B100BC781A /* noNewWordWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CF164907B000BC781A /* noNewWordWarning@2x.png */; };
+		1C0A25D9164907B100BC781A /* noNewWordWarning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25CF164907B000BC781A /* noNewWordWarning@2x.png */; };
+		1C0A25DA164907B100BC781A /* showExplain.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25D0164907B000BC781A /* showExplain.png */; };
+		1C0A25DB164907B100BC781A /* showExplain.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25D0164907B000BC781A /* showExplain.png */; };
+		1C0A25DC164907B100BC781A /* showExplain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25D1164907B100BC781A /* showExplain@2x.png */; };
+		1C0A25DD164907B100BC781A /* showExplain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25D1164907B100BC781A /* showExplain@2x.png */; };
 		1C3A8CA7163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
 		1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */; };
 		1C3A8CA9163D4FE100C893CA /* WordExplain+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A8C97163D4FE100C893CA /* WordExplain+Utility.m */; };
@@ -139,8 +149,6 @@
 		1C0403CA1642879800F0B254 /* icon_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_search@2x.png"; sourceTree = "<group>"; };
 		1C0403CD164287C600F0B254 /* icon_wordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wordBook.png; sourceTree = "<group>"; };
 		1C0403CE164287C600F0B254 /* icon_wordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_wordBook@2x.png"; sourceTree = "<group>"; };
-		1C0403D916429A0500F0B254 /* displayExplain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = displayExplain.png; sourceTree = "<group>"; };
-		1C0403DA16429A0500F0B254 /* displayExplain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "displayExplain@2x.png"; sourceTree = "<group>"; };
 		1C0403DD1642A72700F0B254 /* WordReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordReviewViewController.h; path = ../WordReviewViewController.h; sourceTree = "<group>"; };
 		1C0403DE1642A72700F0B254 /* WordReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordReviewViewController.m; path = ../WordReviewViewController.m; sourceTree = "<group>"; };
 		1C0403E11642D53B00F0B254 /* NewWord+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewWord+Utility.h"; sourceTree = "<group>"; };
@@ -149,6 +157,12 @@
 		1C0A25C11648E45100BC781A /* addToWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addToWordBook@2x.png"; sourceTree = "<group>"; };
 		1C0A25C21648E45100BC781A /* removeFromWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeFromWordBook.png; sourceTree = "<group>"; };
 		1C0A25C31648E45100BC781A /* removeFromWordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "removeFromWordBook@2x.png"; sourceTree = "<group>"; };
+		1C0A25CC164907AF00BC781A /* alreadyReviewAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alreadyReviewAll.png; sourceTree = "<group>"; };
+		1C0A25CD164907AF00BC781A /* alreadyReviewAll@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alreadyReviewAll@2x.png"; sourceTree = "<group>"; };
+		1C0A25CE164907AF00BC781A /* noNewWordWarning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noNewWordWarning.png; sourceTree = "<group>"; };
+		1C0A25CF164907B000BC781A /* noNewWordWarning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noNewWordWarning@2x.png"; sourceTree = "<group>"; };
+		1C0A25D0164907B000BC781A /* showExplain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showExplain.png; sourceTree = "<group>"; };
+		1C0A25D1164907B100BC781A /* showExplain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "showExplain@2x.png"; sourceTree = "<group>"; };
 		1C3A8C94163D4FE100C893CA /* WordSampleSentence+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordSampleSentence+Utility.h"; sourceTree = "<group>"; };
 		1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WordSampleSentence+Utility.m"; sourceTree = "<group>"; };
 		1C3A8C96163D4FE100C893CA /* WordExplain+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordExplain+Utility.h"; sourceTree = "<group>"; };
@@ -278,6 +292,12 @@
 		1C0403C4164285DA00F0B254 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1C0A25CC164907AF00BC781A /* alreadyReviewAll.png */,
+				1C0A25CD164907AF00BC781A /* alreadyReviewAll@2x.png */,
+				1C0A25CE164907AF00BC781A /* noNewWordWarning.png */,
+				1C0A25CF164907B000BC781A /* noNewWordWarning@2x.png */,
+				1C0A25D0164907B000BC781A /* showExplain.png */,
+				1C0A25D1164907B100BC781A /* showExplain@2x.png */,
 				1C4DA8BB1647965A00EA07AF /* tts.png */,
 				1C4DA8AB1646EB7D00EA07AF /* wordDeleted.png */,
 				1C4DA8AC1646EB7D00EA07AF /* wordDeleted@2x.png */,
@@ -295,8 +315,6 @@
 				1C0403CA1642879800F0B254 /* icon_search@2x.png */,
 				1C0403C51642862E00F0B254 /* history.png */,
 				1C0403C61642862E00F0B254 /* history@2x.png */,
-				1C0403D916429A0500F0B254 /* displayExplain.png */,
-				1C0403DA16429A0500F0B254 /* displayExplain@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -566,8 +584,6 @@
 				1C0403CC1642879800F0B254 /* icon_search@2x.png in Resources */,
 				1C0403CF164287C600F0B254 /* icon_wordBook.png in Resources */,
 				1C0403D0164287C600F0B254 /* icon_wordBook@2x.png in Resources */,
-				1C0403DB16429A0600F0B254 /* displayExplain.png in Resources */,
-				1C0403DC16429A0600F0B254 /* displayExplain@2x.png in Resources */,
 				1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */,
 				1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */,
 				1CECF9BF16464BAC00D9FD2F /* YAD.sqlite in Resources */,
@@ -580,6 +596,12 @@
 				1C0A25C61648E45100BC781A /* addToWordBook@2x.png in Resources */,
 				1C0A25C81648E45100BC781A /* removeFromWordBook.png in Resources */,
 				1C0A25CA1648E45100BC781A /* removeFromWordBook@2x.png in Resources */,
+				1C0A25D2164907B100BC781A /* alreadyReviewAll.png in Resources */,
+				1C0A25D4164907B100BC781A /* alreadyReviewAll@2x.png in Resources */,
+				1C0A25D6164907B100BC781A /* noNewWordWarning.png in Resources */,
+				1C0A25D8164907B100BC781A /* noNewWordWarning@2x.png in Resources */,
+				1C0A25DA164907B100BC781A /* showExplain.png in Resources */,
+				1C0A25DC164907B100BC781A /* showExplain@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +623,12 @@
 				1C0A25C71648E45100BC781A /* addToWordBook@2x.png in Resources */,
 				1C0A25C91648E45100BC781A /* removeFromWordBook.png in Resources */,
 				1C0A25CB1648E45100BC781A /* removeFromWordBook@2x.png in Resources */,
+				1C0A25D3164907B100BC781A /* alreadyReviewAll.png in Resources */,
+				1C0A25D5164907B100BC781A /* alreadyReviewAll@2x.png in Resources */,
+				1C0A25D7164907B100BC781A /* noNewWordWarning.png in Resources */,
+				1C0A25D9164907B100BC781A /* noNewWordWarning@2x.png in Resources */,
+				1C0A25DB164907B100BC781A /* showExplain.png in Resources */,
+				1C0A25DD164907B100BC781A /* showExplain@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

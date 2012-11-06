@@ -132,7 +132,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         sampleSentenceView.text = sampleSentenceString;
         sampleSentenceView.editable = NO;
         sampleSentenceView.scrollEnabled = NO;
-        sampleSentenceView.font = [UIFont fontWithName:@"Helvetica" size:15];
+        sampleSentenceView.font = [UIFont fontWithName:@"Helvetica" size:14];
         [self.scrollView addSubview:sampleSentenceView];
         // 调整例句frame 两种调整UITextView 高度的方法，注意该种方法需要在 addSubView后才能使用。
         CGRect sampleSentenceFrame = sampleSentenceView.frame;
@@ -149,22 +149,21 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         } else {
             scrollFrame = CGRectMake(0, 0, 320, 367);
         }
+        // 由搜索页面segue过来的,navigationBarHidden是YES,但是实际上还是显示的。scrollView frame大小其实包括 navigationBar。
+        if (self.navigationController.navigationBarHidden) {
+            scrollFrame.size.height += 44;
+        }
+        
         self.scrollView.frame = scrollFrame;
         [self.scrollView setContentSize:CGSizeMake(320, 120 + explainsView.frame.size.height + sampleSentenceView.frame.size.height)];
-        //DDLogVerbose(@"scroll frame is %@", NSStringFromCGRect(scrollFrame));
         //DDLogVerbose(@"scroll contentsize is %@", NSStringFromCGSize(self.scrollView.contentSize));
+        //DDLogVerbose(@"scrollView frame is %@", NSStringFromCGRect(self.scrollView.frame));
     }
 }
 
 - (void)readTheWord:(UIButton *)sender {
-    NSString *wordSpell = self.theWordEntity.spell;
-    // 取得发音地址
-    NSString *requestString = [NSString stringWithFormat:@"http://translate.google.cn/translate_tts?ie=UTF-8&q=%@&tl=en", wordSpell];
-    NSURL *audioURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    DDLogVerbose(@"单词发音地址是:%@", audioURL);
-    
     // 初始化请求
-    self.request = [[ASIHTTPRequest alloc] initWithURL:audioURL];
+    self.request = [[ASIHTTPRequest alloc] initWithURL:[WordEntity ttsURLForWord:self.theWordEntity.spell]];
     // 设置缓存
     [self.request setDownloadCache:[ASIDownloadCache sharedCache]];
     // 发音是不会变的

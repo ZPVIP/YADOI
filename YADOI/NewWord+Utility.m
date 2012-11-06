@@ -20,7 +20,27 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
         DDLogError(@"传入的managedObjectContext为空");
         return nil;
     }
+    // 先判断今天已经复习的单词数
+    int todaysReviewedNumber = 0;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *todaysReviewNumberDic = [defaults objectForKey:TODAY_ALREADAY_REVIEWED_NUMBER];
+    NSNumber *reviewedNumber = [todaysReviewNumberDic objectForKey:[NewWord dateFormattedString:[NSDate date]]];
+    if (reviewedNumber != nil){
+        DDLogVerbose(@"今天已经复习了%d个生词", reviewedNumber.intValue);
+        todaysReviewedNumber = reviewedNumber.intValue;
+    } else {
+        DDLogVerbose(@"今天还没有复习生词");
+    }
+    // 用户设置的单词数
+    int dailyReviewWordNumber = [[NSUserDefaults standardUserDefaults] integerForKey:DAILY_REVIEW_WORD_NUMBER];
     
+    // 如果已经复习完，返回一个空数组
+    if (todaysReviewedNumber >= dailyReviewWordNumber) {
+        return [NSArray array];
+    }
+    
+    // 如果没有复习完，继续
+    int numberToReview = dailyReviewWordNumber - todaysReviewedNumber;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"NewWord"];
     // 过滤条件是:明天之前需要复习的单词
     NSCalendar *gregorianClander = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -41,11 +61,10 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
         return nil;
     }
     
-    int dailyReviewWordNumber = [[NSUserDefaults standardUserDefaults] integerForKey:DAILY_REVIEW_WORD_NUMBER];
-    if ([matches count] <= dailyReviewWordNumber) {
+    if ([matches count] <= numberToReview) {
         return matches;
     } else {
-        return [matches subarrayWithRange:NSMakeRange(0, dailyReviewWordNumber)];
+        return [matches subarrayWithRange:NSMakeRange(0, numberToReview)];
     }
 }
 + (NSInteger)countOfNewWordWithConext:(NSManagedObjectContext *)managedObjectContext
@@ -105,6 +124,13 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (NSString *)addDateString
 {
     [self willAccessValueForKey:@"addDate"];
+    NSDate *date = self.addDate;
+    [self didAccessValueForKey:@"addDate"];
+    return [NewWord dateFormattedString:date];
+}
+
++ (NSString *)dateFormattedString:(NSDate *)date
+{
     static NSDateFormatter *formatter = nil;
     if (formatter == nil) {
         formatter = [[NSDateFormatter alloc] init];
@@ -114,8 +140,7 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         [formatter setDateStyle:NSDateFormatterMediumStyle];
         [formatter setTimeStyle:NSDateFormatterNoStyle];
-     }
-    [self didAccessValueForKey:@"addDate"];
-    return [formatter stringFromDate:self.addDate];
+    }
+    return [formatter stringFromDate:date];
 }
 @end
