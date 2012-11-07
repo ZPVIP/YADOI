@@ -137,6 +137,19 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return YES;
 }
 
+#pragma mark -
+#pragma mark UISearchBar Delegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if ([self.filteredObjects count] != 0) {
+        WordDetailViewController *wordDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WordDetailViewController"];
+        wordDetailViewController.theWordEntity = [self.filteredObjects objectAtIndex:0];
+        [self.navigationController pushViewController:wordDetailViewController animated:YES];
+    }
+}
+
+#pragma mark -
+#pragma mark queryWord From Internet
 - (void)queryWordFromNet:(NSString *)searchString
 {
     NSString *currentSearchString = self.searchDisplayController.searchBar.text;

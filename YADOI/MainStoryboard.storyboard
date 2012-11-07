@@ -292,7 +292,7 @@
         <!--Word Detail View Controller-->
         <scene sceneID="MWV-ZV-UX7">
             <objects>
-                <viewController id="Yeb-J9-JuI" customClass="WordDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WordDetailViewController" id="Yeb-J9-JuI" customClass="WordDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yjG-xT-P7J">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
