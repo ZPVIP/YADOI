@@ -75,6 +75,10 @@
 		1C4DA8B61646EB7E00EA07AF /* wordAdded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8AE1646EB7E00EA07AF /* wordAdded@2x.png */; };
 		1C4DA8BC1647965A00EA07AF /* tts.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8BB1647965A00EA07AF /* tts.png */; };
 		1C4DA8BD1647965A00EA07AF /* tts.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4DA8BB1647965A00EA07AF /* tts.png */; };
+		1CBC6297164ABABD00AC4F02 /* pronouncing.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBC6293164ABABD00AC4F02 /* pronouncing.png */; };
+		1CBC6298164ABABD00AC4F02 /* pronouncing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBC6294164ABABD00AC4F02 /* pronouncing@2x.png */; };
+		1CBC6299164ABABD00AC4F02 /* voice_query.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBC6295164ABABD00AC4F02 /* voice_query.png */; };
+		1CBC629A164ABABD00AC4F02 /* voice_query@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBC6296164ABABD00AC4F02 /* voice_query@2x.png */; };
 		1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8A9164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A7164450E900D9FD2F /* icon_settings.png */; };
@@ -197,6 +201,10 @@
 		1C4DA8AD1646EB7D00EA07AF /* wordAdded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wordAdded.png; sourceTree = "<group>"; };
 		1C4DA8AE1646EB7E00EA07AF /* wordAdded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordAdded@2x.png"; sourceTree = "<group>"; };
 		1C4DA8BB1647965A00EA07AF /* tts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tts.png; sourceTree = "<group>"; };
+		1CBC6293164ABABD00AC4F02 /* pronouncing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pronouncing.png; sourceTree = "<group>"; };
+		1CBC6294164ABABD00AC4F02 /* pronouncing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pronouncing@2x.png"; sourceTree = "<group>"; };
+		1CBC6295164ABABD00AC4F02 /* voice_query.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice_query.png; sourceTree = "<group>"; };
+		1CBC6296164ABABD00AC4F02 /* voice_query@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice_query@2x.png"; sourceTree = "<group>"; };
 		1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_settings@2x.png"; sourceTree = "<group>"; };
 		1CECF8A7164450E900D9FD2F /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_settings.png; sourceTree = "<group>"; };
 		1CECF93C16457E8000D9FD2F /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -292,6 +300,10 @@
 		1C0403C4164285DA00F0B254 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1CBC6293164ABABD00AC4F02 /* pronouncing.png */,
+				1CBC6294164ABABD00AC4F02 /* pronouncing@2x.png */,
+				1CBC6295164ABABD00AC4F02 /* voice_query.png */,
+				1CBC6296164ABABD00AC4F02 /* voice_query@2x.png */,
 				1C0A25CC164907AF00BC781A /* alreadyReviewAll.png */,
 				1C0A25CD164907AF00BC781A /* alreadyReviewAll@2x.png */,
 				1C0A25CE164907AF00BC781A /* noNewWordWarning.png */,
@@ -602,6 +614,10 @@
 				1C0A25D8164907B100BC781A /* noNewWordWarning@2x.png in Resources */,
 				1C0A25DA164907B100BC781A /* showExplain.png in Resources */,
 				1C0A25DC164907B100BC781A /* showExplain@2x.png in Resources */,
+				1CBC6297164ABABD00AC4F02 /* pronouncing.png in Resources */,
+				1CBC6298164ABABD00AC4F02 /* pronouncing@2x.png in Resources */,
+				1CBC6299164ABABD00AC4F02 /* voice_query.png in Resources */,
+				1CBC629A164ABABD00AC4F02 /* voice_query@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

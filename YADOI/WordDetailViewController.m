@@ -24,9 +24,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 @property (nonatomic, strong) AVAudioPlayer *player;
 @property (nonatomic, strong) ASIHTTPRequest *request;
 
-// 传入一张图片的名字，显示，然后淡出
--(void)showTip:(NSString *)imageName;
+// 传入一张图片的名字，显示，然后淡出，用来提示添加到单词本或者从单词本删除成功
+-(void)showAddOrRemoveTip:(NSString *)imageName;
 
+// 在画面中央显示提示，主要是发音时的提示
+- (void)showTipInCenter:(NSString *)imageName;
 @end
 
 @implementation WordDetailViewController
@@ -162,6 +164,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 - (void)readTheWord:(UIButton *)sender {
+    // 显示提示语
+    [self showTipInCenter:@"voice_query.png"];
     // 初始化请求
     self.request = [[ASIHTTPRequest alloc] initWithURL:[WordEntity ttsURLForWord:self.theWordEntity.spell]];
     // 设置缓存
@@ -190,6 +194,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         // 数据是否正常加载
         if (error == nil) {
             [self.player play];
+            [self showTipInCenter:@"pronouncing.png"];
         } else {
             DDLogError(@"播放器初始化失败");
         }
@@ -223,15 +228,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     if ([self.theWordEntity isInTheNewWordBook]) {
         [self.theWordEntity removeFromWordBook];
         self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"addToWordBook"];
-        [self showTip:@"wordDeleted.png"];
+        [self showAddOrRemoveTip:@"wordDeleted.png"];
     } else {
         [self.theWordEntity addToTheNewWordBook];
         self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"removeFromWordBook"];
-        [self showTip:@"wordAdded.png"];
+        [self showAddOrRemoveTip:@"wordAdded.png"];
     }
 }
 
-- (void)showTip:(NSString *)imageName
+- (void)showAddOrRemoveTip:(NSString *)imageName
 {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     CGFloat imageHeight = imageView.image.size.height;
@@ -248,6 +253,22 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         } completion:^(BOOL finished){
             [imageView removeFromSuperview];
         }];
+    }];
+}
+
+- (void)showTipInCenter:(NSString *)imageName
+{
+    [[self.view viewWithTag:200] removeFromSuperview];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    CGFloat imageHeight = imageView.image.size.height;
+    CGFloat imageWidth = imageView.image.size.width;
+    imageView.tag = 200;
+    imageView.frame = CGRectMake((320-imageWidth)/2, 260, imageWidth, imageHeight);
+    [self.view addSubview:imageView];
+    [UIView animateWithDuration:1.2 animations:^{
+        imageView.alpha = 0;
+    } completion:^(BOOL finished){
+        [imageView removeFromSuperview];
     }];
 }
 
