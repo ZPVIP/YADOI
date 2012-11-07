@@ -10,6 +10,7 @@
 #import "WordEntity+Utility.h"
 #import "WordExplain.h"
 #import "DDLog.h"
+#import "SettingsKey.h"
 #import "WordDetailViewController.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -124,9 +125,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         NSArray *tempArray = [self.fetchedObjects filteredArrayUsingPredicate:predicate];
         tempArray = [tempArray sortedArrayUsingDescriptors:@[sortDescriptor]];
         self.filteredObjects = [tempArray mutableCopy];
-        // 如果条目数为0，则尝试到网络上取词,如果存在就加入到本地词库中
-        if ([self.filteredObjects count] == 0) {
-            [self performSelector:@selector(queryWordFromNet:) withObject:searchString afterDelay:0.7];
+        // 依据用户设置来为判断是否启用网络查词
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults boolForKey:ONLY_USE_LOCAL_DIC]){
+            // 如果条目数为0，则尝试到网络上取词,如果确实有这个单词，就加入到本地词库中
+            if ([self.filteredObjects count] == 0) {
+                [self performSelector:@selector(queryWordFromNet:) withObject:searchString afterDelay:0.7];
+            }
         }
     }
     return YES;
