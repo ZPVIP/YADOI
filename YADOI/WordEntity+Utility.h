@@ -8,6 +8,15 @@
 
 #import "WordEntity.h"
 
+// 和 Word 相关的一些异步操作放到这里面，比如从网络取词
+@protocol WordEntityDelegate <NSObject>
+@optional
+// 当从网络取词成功时调用,返回的是一个由Json转化过来的Dictionary,可以直接插入到数据库中
+- (void)queryNetWorkDicFinished:(NSDictionary *)wordEntityDic;
+// 取词失败时调用
+- (void)queryNetWorkDicFailed:(NSError *)error;
+@end
+
 @interface WordEntity (Utility)
 
 // 用一个 json 格式转换过来的 NSDictionary 来创建 WordEntity
@@ -29,4 +38,7 @@
 - (void)removeFromWordBook;
 // 单词发音地址
 + (NSURL *)ttsURLForWord: (NSString*)word;
+// 用给定的字符串从网络取词,如果存在就加入到数据库中。
+// 查询完成后会调用 delegate的相应方法，以做近一步处理
++ (void)queryNetWorkDicFor: (NSString *)searchString setDelegate:(id<WordEntityDelegate>)delegate;
 @end

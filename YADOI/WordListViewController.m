@@ -12,10 +12,14 @@
 #import "DDLog.h"
 #import "WordDetailViewController.h"
 
-static const int ddLogLevel = LOG_LEVEL_ERROR;
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
-@interface WordListViewController ()
-
+@interface WordListViewController ()<WordEntityDelegate>
+// 为效率而做的一点优化，在输入一个字母0.3后作检查，如果一致，则搜索，否则认为还在输入中，不搜索。
+- (void)queryWordFromNet:(NSString *)searchString;
+// WordEntityDelegate
+- (void)queryNetWorkDicFinished:(NSDictionary *)wordEntityDic;
+- (void)queryNetWorkDicFailed:(NSError *)error;
 @end
 
 @implementation WordListViewController
@@ -90,17 +94,49 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 // 先Quick and Dirty 地跑起来
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSFetchRequest *fetchRequest = self.fetchedResultsController.fetchRequest;
-    fetchRequest.fetchBatchSize = 20;
-    fetchRequest.fetchLimit = 50;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@",searchString];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc]
-                                     initWithFetchRequest:fetchRequest
-                                     managedObjectContext:self.managedObjectContext
-                                     sectionNameKeyPath:nil cacheName:searchString];
+    // 如果是空格则不查询
+    NSString *trimedString = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (trimedString != nil && ![trimedString isEqualToString:@""]) {
+        NSFetchRequest *fetchRequest = self.fetchedResultsController.fetchRequest;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.fetchLimit = 50;
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"spell beginswith[c] %@",searchString];
+        self.fetchedResultsController = [[NSFetchedResultsController alloc]
+                                         initWithFetchRequest:fetchRequest
+                                         managedObjectContext:self.managedObjectContext
+                                         sectionNameKeyPath:nil cacheName:searchString];
+        // 如果条目数为0，则尝试到网络上取词,如果存在就加入到本地词库中
+        if ([self.fetchedResultsController.fetchedObjects count] == 0) {
+            [self performSelector:@selector(queryWordFromNet:) withObject:searchString afterDelay:0.7];
+        }
+    }
     return YES;
 }
 
+- (void)queryWordFromNet:(NSString *)searchString
+{
+    NSString *currentSearchString = self.searchDisplayController.searchBar.text;
+    DDLogVerbose(@"现在搜索框字符串是: %@", currentSearchString);
+    DDLogVerbose(@"传入的字符串是:%@",searchString);
+    if ([currentSearchString isEqualToString:searchString]) {
+        DDLogVerbose(@"两者相同开始搜索");
+        [WordEntity queryNetWorkDicFor:searchString setDelegate:self];
+    }
+}
+
+- (void)queryNetWorkDicFinished:(NSDictionary *)wordEntityDic
+{
+    if (wordEntityDic == nil) {
+        DDLogVerbose(@"查询有结果，但结果不满意，不插入数据库");
+    } else {
+        DDLogVerbose(@"查询成功，将数据插入数据库");
+        [WordEntity wordEntityWithJsonDictionary:wordEntityDic inManagedOjbectContext:self.managedObjectContext];
+    }
+}
+- (void)queryNetWorkDicFailed:(NSError *)error
+{
+    DDLogVerbose(@"网络查词失败，做相应的提示");
+}
 #pragma mark -
 #pragma mark UISearchBarDelegate
 // 这时显示的是self.tableView,需要把 fetchRequest改回来。
@@ -109,6 +145,20 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     [self setupFetchedRequestsController];
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    DDLogVerbose(@"textDidChange");
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    DDLogVerbose(@"textDidEndEditing");
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    DDLogVerbose(@"textDidBeginEditing");
+}
 #pragma mark -
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

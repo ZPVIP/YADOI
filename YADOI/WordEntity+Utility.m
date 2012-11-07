@@ -10,9 +10,14 @@
 #import "WordExplain+Utility.h"
 #import "WordSampleSentence+Utility.h"
 #import "NewWord.h"
+#import "ASIHTTPRequest.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+
+// 有道的API Key和 keyFrom
+#define KEYFROM @"comcuter"
+#define KEY     @"611168882"
 
 @implementation WordEntity (Utility)
 
@@ -234,5 +239,84 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSURL *audioURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     DDLogVerbose(@"单词发音地址是:%@", audioURL);
     return audioURL;
+}
+
++ (void)queryNetWorkDicFor:(NSString *)searchString setDelegate:(id<WordEntityDelegate>)delegate
+{
+    NSString *requestFormatString = @"http://fanyi.youdao.com/openapi.do?keyfrom=%@&key=%@&type=data&doctype=json&version=1.1&q=%@";
+    NSString *wordQueryString = [NSString stringWithFormat:requestFormatString, KEYFROM, KEY, searchString];
+    NSURL *wordQueryURL = [NSURL URLWithString:[wordQueryString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    DDLogVerbose(@"%@的请求地址是%@",searchString, wordQueryURL);
+    
+    __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:wordQueryURL];
+    
+    [request setCompletionBlock:^{
+        NSData *responseData = [request responseData];
+        DDLogVerbose(@"Word Query Finish");
+        if ([responseData length] > 10) {
+            NSError *error = nil;
+            id returnWords = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+            if (error != nil) {
+                DDLogError(@"不能解析返回的数据%@, %@",[error localizedDescription],[error localizedFailureReason]);
+            } else {
+                NSDictionary *youDaoDic = nil;
+                if ([returnWords isKindOfClass:[NSArray class]]) {
+                    youDaoDic = [returnWords lastObject];
+                } else if ([returnWords isKindOfClass:[NSDictionary class]]) {
+                    youDaoDic = returnWords;
+                }
+                DDLogVerbose(@"返回的数据是Dictionary：%@", youDaoDic);
+                // 将有道字典转成本地Model对应的类型
+                NSDictionary *localWordJsonDic = [WordEntity contvertYouDaoJsonDicToLocalWordJsonDic:returnWords];
+                // 将收到的结果返回
+                [delegate queryNetWorkDicFinished:localWordJsonDic];
+            }
+        }
+    
+    }];
+    
+    [request setFailedBlock:^{
+        DDLogError(@"Failed");
+        [delegate queryNetWorkDicFailed:request.error];
+    }];
+    
+    [request startAsynchronous];
+}
+
+// 将有道字典转化成本地Model对应的Dic,如果有错误，则返回nil
++ (NSDictionary *)contvertYouDaoJsonDicToLocalWordJsonDic:(NSDictionary *)youDaoDic
+{
+    NSString *trimedErrorCode = [[NSString stringWithFormat:@"%@", [youDaoDic valueForKey:@"errorCode"]]
+                                 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    DDLogVerbose(@"erorCode is %@", trimedErrorCode);
+    // 返回状态码不为0
+    if (![trimedErrorCode isEqualToString:@"0"]){
+        return nil;
+    }
+    
+    NSString *queryString = [youDaoDic valueForKey:@"query"];
+    NSArray *translation = [youDaoDic valueForKey:@"translation"];
+    NSString *translationString = [translation lastObject];
+    NSArray *explains = [youDaoDic valueForKeyPath:@"basic.explains"];
+    NSString *phonetic = [youDaoDic valueForKeyPath:@"basic.phonetic"];
+    // 没有中文翻译结果，就不要了。
+    if (queryString == nil || translationString == nil ||
+        [queryString localizedCaseInsensitiveCompare:translationString] == NSOrderedSame || [explains count] == 0) {
+        return nil;
+    }
+    
+    // 正常情况，创建一个新的Dic并返回
+    NSMutableDictionary *localDic = [NSMutableDictionary dictionary];
+    if (queryString != nil) {
+        [localDic setObject:queryString forKey:@"word"];
+    }
+    if (explains != nil) {
+        [localDic setObject:explains forKey:@"explains"];
+    }
+    if (phonetic != nil) {
+        [localDic setObject:phonetic forKey:@"phonetic"];
+    }
+    
+    return localDic;
 }
 @end
