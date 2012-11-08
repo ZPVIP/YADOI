@@ -14,8 +14,6 @@
 		1C0403CC1642879800F0B254 /* icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403CA1642879800F0B254 /* icon_search@2x.png */; };
 		1C0403CF164287C600F0B254 /* icon_wordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403CD164287C600F0B254 /* icon_wordBook.png */; };
 		1C0403D0164287C600F0B254 /* icon_wordBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0403CE164287C600F0B254 /* icon_wordBook@2x.png */; };
-		1C0403DF1642A72700F0B254 /* WordReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403DE1642A72700F0B254 /* WordReviewViewController.m */; };
-		1C0403E01642A72700F0B254 /* WordReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403DE1642A72700F0B254 /* WordReviewViewController.m */; };
 		1C0403E31642D53B00F0B254 /* NewWord+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403E21642D53B00F0B254 /* NewWord+Utility.m */; };
 		1C0403E41642D53B00F0B254 /* NewWord+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0403E21642D53B00F0B254 /* NewWord+Utility.m */; };
 		1C0A25C41648E45100BC781A /* addToWordBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0A25C01648E45100BC781A /* addToWordBook.png */; };
@@ -110,8 +108,6 @@
 		1CECF9811645837A00D9FD2F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CECF9801645837A00D9FD2F /* libz.dylib */; };
 		1CECF983164583A100D9FD2F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CECF982164583A100D9FD2F /* SystemConfiguration.framework */; };
 		1CECF9851645858B00D9FD2F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CECF9841645858A00D9FD2F /* AVFoundation.framework */; };
-		1CECF9BF16464BAC00D9FD2F /* YAD.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF9BE16464BAC00D9FD2F /* YAD.sqlite */; };
-		1CECF9C016464BAC00D9FD2F /* YAD.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF9BE16464BAC00D9FD2F /* YAD.sqlite */; };
 		1CECF9C316464C5E00D9FD2F /* WordSampleSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CECF9C216464C5E00D9FD2F /* WordSampleSentence.m */; };
 		1CECF9C416464C5E00D9FD2F /* WordSampleSentence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CECF9C216464C5E00D9FD2F /* WordSampleSentence.m */; };
 		1CECF9C716464C6000D9FD2F /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CECF9C616464C6000D9FD2F /* WordEntity.m */; };
@@ -136,6 +132,10 @@
 		1CEF6FDA163C19DE00D31F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEF6FB5163C19DE00D31F32 /* Foundation.framework */; };
 		1CEF6FE2163C19DE00D31F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CEF6FE0163C19DE00D31F32 /* InfoPlist.strings */; };
 		1CEF6FE5163C19DE00D31F32 /* YADOITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEF6FE4163C19DE00D31F32 /* YADOITests.m */; };
+		1CF32106164C069600FD9B57 /* WordReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF32105164C069600FD9B57 /* WordReviewViewController.m */; };
+		1CF3210B164C0DB800FD9B57 /* YAD.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1CF32109164C0DB800FD9B57 /* YAD.sqlite */; };
+		1CF3210C164C0F8400FD9B57 /* YAD.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1CF32109164C0DB800FD9B57 /* YAD.sqlite */; };
+		1CF3210D164C101200FD9B57 /* WordReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF32105164C069600FD9B57 /* WordReviewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +273,9 @@
 		1CEF6FE1163C19DE00D31F32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1CEF6FE3163C19DE00D31F32 /* YADOITests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YADOITests.h; sourceTree = "<group>"; };
 		1CEF6FE4163C19DE00D31F32 /* YADOITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YADOITests.m; sourceTree = "<group>"; };
+		1CF32105164C069600FD9B57 /* WordReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordReviewViewController.m; sourceTree = "<group>"; };
+		1CF32108164C069D00FD9B57 /* WordReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordReviewViewController.h; sourceTree = "<group>"; };
+		1CF32109164C0DB800FD9B57 /* YAD.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = YAD.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +345,7 @@
 		1C3A8C91163D4F9700C893CA /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1CF32109164C0DB800FD9B57 /* YAD.sqlite */,
 				1CECF9BE16464BAC00D9FD2F /* YAD.sqlite */,
 				1C3A8DAD163E98F700C893CA /* CoreDataTableViewController.h */,
 				1C3A8DAE163E98F700C893CA /* CoreDataTableViewController.m */,
@@ -476,6 +480,8 @@
 				1C0403BD1641423C00F0B254 /* NewWordBookViewController.m */,
 				1C0403DD1642A72700F0B254 /* WordReviewViewController.h */,
 				1C0403DE1642A72700F0B254 /* WordReviewViewController.m */,
+				1CF32108164C069D00FD9B57 /* WordReviewViewController.h */,
+				1CF32105164C069600FD9B57 /* WordReviewViewController.m */,
 				1C4DA883164672AC00EA07AF /* SettingsViewController.h */,
 				1C4DA884164672AC00EA07AF /* SettingsViewController.m */,
 				1C4DA889164697AC00EA07AF /* DailyReviewWordNumberViewController.h */,
@@ -597,6 +603,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF3210C164C0F8400FD9B57 /* YAD.sqlite in Resources */,
 				1CEF6FBE163C19DE00D31F32 /* InfoPlist.strings in Resources */,
 				1CEF6FC6163C19DE00D31F32 /* Default.png in Resources */,
 				1CEF6FC8163C19DE00D31F32 /* Default@2x.png in Resources */,
@@ -610,7 +617,6 @@
 				1C0403D0164287C600F0B254 /* icon_wordBook@2x.png in Resources */,
 				1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */,
 				1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */,
-				1CECF9BF16464BAC00D9FD2F /* YAD.sqlite in Resources */,
 				1C4DA8AF1646EB7E00EA07AF /* wordDeleted.png in Resources */,
 				1C4DA8B11646EB7E00EA07AF /* wordDeleted@2x.png in Resources */,
 				1C4DA8B31646EB7E00EA07AF /* wordAdded.png in Resources */,
@@ -641,7 +647,6 @@
 				1C3A8DAC163E979100C893CA /* MainStoryboard.storyboard in Resources */,
 				1CECF8A9164450E900D9FD2F /* icon_settings@2x.png in Resources */,
 				1CECF8AB164450E900D9FD2F /* icon_settings.png in Resources */,
-				1CECF9C016464BAC00D9FD2F /* YAD.sqlite in Resources */,
 				1C4DA8B01646EB7E00EA07AF /* wordDeleted.png in Resources */,
 				1C4DA8B21646EB7E00EA07AF /* wordDeleted@2x.png in Resources */,
 				1C4DA8B41646EB7E00EA07AF /* wordAdded.png in Resources */,
@@ -657,6 +662,7 @@
 				1C0A25D9164907B100BC781A /* noNewWordWarning@2x.png in Resources */,
 				1C0A25DB164907B100BC781A /* showExplain.png in Resources */,
 				1C0A25DD164907B100BC781A /* showExplain@2x.png in Resources */,
+				1CF3210B164C0DB800FD9B57 /* YAD.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +725,6 @@
 				1C48F41D163FAB3400C167FD /* CoreDataInsetTableViewController.m in Sources */,
 				1C4980EA163FBC4800D94BB8 /* WordDetailViewController.m in Sources */,
 				1C0403BE1641423C00F0B254 /* NewWordBookViewController.m in Sources */,
-				1C0403DF1642A72700F0B254 /* WordReviewViewController.m in Sources */,
 				1C0403E31642D53B00F0B254 /* NewWord+Utility.m in Sources */,
 				1CECF9C316464C5E00D9FD2F /* WordSampleSentence.m in Sources */,
 				1CECF9C716464C6000D9FD2F /* WordEntity.m in Sources */,
@@ -730,6 +735,7 @@
 				1C4DA88B164697AD00EA07AF /* DailyReviewWordNumberViewController.m in Sources */,
 				1CBC629E164AC8D400AC4F02 /* LookUpHistoryViewController.m in Sources */,
 				1CBC62A2164ACADE00AC4F02 /* LookUpHistory+Utility.m in Sources */,
+				1CF32106164C069600FD9B57 /* WordReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,6 +743,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF3210D164C101200FD9B57 /* WordReviewViewController.m in Sources */,
 				1CEF6FE5163C19DE00D31F32 /* YADOITests.m in Sources */,
 				1C3A8CA8163D4FE100C893CA /* WordSampleSentence+Utility.m in Sources */,
 				1C3A8CAA163D4FE100C893CA /* WordExplain+Utility.m in Sources */,
@@ -747,7 +754,6 @@
 				1C3A91AE163EBE2200C893CA /* DDASLLogger.m in Sources */,
 				1C3A91B0163EBE2200C893CA /* DDLog.m in Sources */,
 				1C3A91B2163EBE2200C893CA /* DDTTYLogger.m in Sources */,
-				1C0403E01642A72700F0B254 /* WordReviewViewController.m in Sources */,
 				1C0403E41642D53B00F0B254 /* NewWord+Utility.m in Sources */,
 				1CECF95316457E8000D9FD2F /* ASIAuthenticationDialog.m in Sources */,
 				1CECF95516457E8000D9FD2F /* ASIDataCompressor.m in Sources */,
