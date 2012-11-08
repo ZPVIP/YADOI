@@ -192,13 +192,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     dateCompents.second = 59;
     NSDate *nextReviewDate = [gregorCalendar dateFromComponents:dateCompents];
     newWord.nextReviewDate = nextReviewDate;
-    
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error] || error != nil) {
-        DDLogError(@"单词加入到生词本时出错,%@, %@", [error localizedDescription], [error localizedFailureReason]);
-    } else {
-        DDLogVerbose(@"%@ 加入到生词本成功", self.spell);
-    }
+    DDLogVerbose(@"单词添加到生词本中成功");
+    [self saveContext];
 }
 
 - (void)removeFromWordBook
@@ -227,8 +222,20 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [self.managedObjectContext deleteObject:[matches lastObject]];
         DDLogVerbose(@"成功将 %@ 从单词本删除", self.spell);
     }
+    [self saveContext];
 }
 
+
+- (BOOL)saveContext
+{
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error] || error != nil) {
+        DDLogError(@"保存context时出错,%@, %@", [error localizedDescription], [error localizedFailureReason]);
+        return NO;
+    } 
+   
+    return YES;
+}
 - (NSString *)firstLetter
 {
     return [[self.spell substringToIndex:1] uppercaseString];

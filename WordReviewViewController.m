@@ -20,7 +20,20 @@
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface WordReviewViewController ()<ASIHTTPRequestDelegate,AVAudioPlayerDelegate>
-@property (nonatomic, assign) NSInteger currentWordIndex; // 当前单词的 idx;
+
+@property (weak, nonatomic) IBOutlet UILabel *wordSpellLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wordPhoneticLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextView *wordExplainTextView;
+
+
+- (IBAction)rememberClicked:(UIButton *)sender;
+- (IBAction)doNotRememberClicked:(UIButton *)sender;
+// 单词发音
+- (void)readTheWord:(UIButton *)sender;
+
+// 当前单词的 idx;
+@property (nonatomic, assign) NSInteger currentWordIndex; 
 @property (nonatomic, strong) AVAudioPlayer *player;
 @property (nonatomic, strong) ASIHTTPRequest *request;
 // 用来辅助保证乱序，但是不重复的数组。
@@ -28,8 +41,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 // 提示已经复习完所有单词
 - (void)showAlreadyReviewAllWord;
-// 单词发音
-- (void)readTheWord:(UIButton *)sender;
 // 将今天已经复习的单词数加1
 - (void)addOneToTodayReviewWordNumber;
 // 取得下一个idx,会根据是否有序而不同

@@ -119,6 +119,17 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     dateComponents.day = dayInterval;
     self.nextReviewDate =[gregorianClander dateByAddingComponents:dateComponents toDate:[NSDate date] options:0];
     DDLogVerbose(@"%@ 下次复习时间是 %@", self.word.spell, self.nextReviewDate);
+    [self saveContext];
+}
+
+- (BOOL)saveContext
+{
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error] || error != nil) {
+        DDLogError(@"保存context时失败, %@ %@", [error localizedDescription], [error localizedFailureReason]);
+        return NO;
+    }
+    return YES;
 }
 
 - (NSString *)addDateString

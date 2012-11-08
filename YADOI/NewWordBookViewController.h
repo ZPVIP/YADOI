@@ -11,6 +11,4 @@
 
 @interface NewWordBookViewController : CoreDataTableViewController<UISearchDisplayDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-- (IBAction)sortOrederChanged:(UISegmentedControl *)sender;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *sortOrderSegmentControl;
 @end

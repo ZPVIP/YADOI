@@ -16,6 +16,9 @@
 const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface NewWordBookViewController ()
+- (IBAction)sortOrederChanged:(UISegmentedControl *)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortOrderSegmentControl;
+
 // 排序及SectionTitle 显示
 typedef enum {
     kOrderByDate = 0,

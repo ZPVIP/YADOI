@@ -10,9 +10,5 @@
 #import "SettingsKey.h"
 
 @interface SettingsViewController : UITableViewController
-- (IBAction)reviewWordOrderedChanged:(UISwitch *)sender;
-- (IBAction)onlyUseLocalDicChanged:(UISwitch *)sender;
-@property (weak, nonatomic) IBOutlet UISwitch *reviewWordOrderedSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *onlyUseLocalDicSwitch;
-@property (weak, nonatomic) IBOutlet UILabel *dailyReviewWordNumberLabel;
+
 @end

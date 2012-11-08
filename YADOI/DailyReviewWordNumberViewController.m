@@ -13,7 +13,9 @@
 const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface DailyReviewWordNumberViewController ()
-
+- (IBAction)dailyReviewNumberChanged:(UISlider *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *showNumberLabel;
+@property (weak, nonatomic) IBOutlet UISlider *numberSlider;
 @end
 
 @implementation DailyReviewWordNumberViewController
