@@ -157,8 +157,6 @@
 		1C0403CA1642879800F0B254 /* icon_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_search@2x.png"; sourceTree = "<group>"; };
 		1C0403CD164287C600F0B254 /* icon_wordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wordBook.png; sourceTree = "<group>"; };
 		1C0403CE164287C600F0B254 /* icon_wordBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_wordBook@2x.png"; sourceTree = "<group>"; };
-		1C0403DD1642A72700F0B254 /* WordReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordReviewViewController.h; path = ../WordReviewViewController.h; sourceTree = "<group>"; };
-		1C0403DE1642A72700F0B254 /* WordReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordReviewViewController.m; path = ../WordReviewViewController.m; sourceTree = "<group>"; };
 		1C0403E11642D53B00F0B254 /* NewWord+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewWord+Utility.h"; sourceTree = "<group>"; };
 		1C0403E21642D53B00F0B254 /* NewWord+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NewWord+Utility.m"; sourceTree = "<group>"; };
 		1C0A25C01648E45100BC781A /* addToWordBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToWordBook.png; sourceTree = "<group>"; };
@@ -243,7 +241,6 @@
 		1CECF982164583A100D9FD2F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1CECF9841645858A00D9FD2F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1CECF98616459A1400D9FD2F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1CECF9BE16464BAC00D9FD2F /* YAD.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = YAD.sqlite; path = ../YAD.sqlite; sourceTree = "<group>"; };
 		1CECF9C116464C5D00D9FD2F /* WordSampleSentence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSampleSentence.h; sourceTree = "<group>"; };
 		1CECF9C216464C5E00D9FD2F /* WordSampleSentence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSampleSentence.m; sourceTree = "<group>"; };
 		1CECF9C516464C5F00D9FD2F /* WordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEntity.h; sourceTree = "<group>"; };
@@ -346,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				1CF32109164C0DB800FD9B57 /* YAD.sqlite */,
-				1CECF9BE16464BAC00D9FD2F /* YAD.sqlite */,
 				1C3A8DAD163E98F700C893CA /* CoreDataTableViewController.h */,
 				1C3A8DAE163E98F700C893CA /* CoreDataTableViewController.m */,
 				1C48F41B163FAB3400C167FD /* CoreDataInsetTableViewController.h */,
@@ -478,8 +474,6 @@
 				1C4980E9163FBC4800D94BB8 /* WordDetailViewController.m */,
 				1C0403BC1641423C00F0B254 /* NewWordBookViewController.h */,
 				1C0403BD1641423C00F0B254 /* NewWordBookViewController.m */,
-				1C0403DD1642A72700F0B254 /* WordReviewViewController.h */,
-				1C0403DE1642A72700F0B254 /* WordReviewViewController.m */,
 				1CF32108164C069D00FD9B57 /* WordReviewViewController.h */,
 				1CF32105164C069600FD9B57 /* WordReviewViewController.m */,
 				1C4DA883164672AC00EA07AF /* SettingsViewController.h */,
