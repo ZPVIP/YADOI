@@ -190,7 +190,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="词典" id="QaF-Za-d2y">
-                        <barButtonItem key="rightBarButtonItem" image="history.png" id="Ijq-Pr-tZV"/>
+                        <barButtonItem key="rightBarButtonItem" image="history.png" id="Ijq-Pr-tZV">
+                            <connections>
+                                <segue destination="9Dj-jg-2nr" kind="modal" identifier="showLookUpHistory" id="siO-L4-7eH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="DRA-hz-PVC" id="GOW-zo-VYC"/>
@@ -209,6 +213,78 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-644" y="-707"/>
+        </scene>
+        <!--Look Up History View Controller - 查词历史-->
+        <scene sceneID="dXd-pQ-xRA">
+            <objects>
+                <tableViewController id="f9m-wh-aOQ" customClass="LookUpHistoryViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="G8u-7X-2Ia">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="搜索查询历史" id="tu4-hd-udJ">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="f9m-wh-aOQ" id="Jau-CD-Lmd"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LookupHistoryCell" textLabel="U1h-oC-J5j" detailTextLabel="RjH-a7-3ZQ" style="IBUITableViewCellStyleSubtitle" id="hhm-mN-4Ne">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U1h-oC-J5j">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RjH-a7-3ZQ">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="f9m-wh-aOQ" id="aGl-ph-b5V"/>
+                            <outlet property="delegate" destination="f9m-wh-aOQ" id="kWl-G7-2wj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="查词历史" id="1Eq-9z-AXg">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="VkZ-td-P9H">
+                            <connections>
+                                <action selector="cancelClicked:" destination="f9m-wh-aOQ" id="r8p-Jv-TAk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="G40-v6-ttc" id="rPd-ek-mEU"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zC-qT-MxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="G40-v6-ttc">
+                    <connections>
+                        <outlet property="delegate" destination="f9m-wh-aOQ" id="7kz-BL-NY1"/>
+                        <outlet property="searchBar" destination="tu4-hd-udJ" id="Gu5-JZ-5XQ"/>
+                        <outlet property="searchContentsController" destination="f9m-wh-aOQ" id="XdA-cW-DzW"/>
+                        <outlet property="searchResultsDataSource" destination="f9m-wh-aOQ" id="vNR-5e-yM3"/>
+                        <outlet property="searchResultsDelegate" destination="f9m-wh-aOQ" id="TEw-0s-AIe"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="564" y="-1309"/>
         </scene>
         <!--Word Review View Controller-->
         <scene sceneID="m3s-o1-GCT">
@@ -287,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbc-KY-Mhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-194" y="-6"/>
+            <point key="canvasLocation" x="-57" y="2"/>
         </scene>
         <!--Word Detail View Controller-->
         <scene sceneID="MWV-ZV-UX7">
@@ -311,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qn9-4m-3xd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-193" y="-707"/>
+            <point key="canvasLocation" x="-57" y="-712"/>
         </scene>
         <!--Navigation Controller - 单词本-->
         <scene sceneID="K5b-wi-sLr">
@@ -539,7 +615,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ZC-6S-hhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-193" y="586"/>
+            <point key="canvasLocation" x="-57" y="586"/>
         </scene>
         <!--Navigation Controller - 设置-->
         <scene sceneID="Gv2-sd-45j">
@@ -559,6 +635,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x05-uz-5r4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1070" y="582"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="05O-CD-I0y">
+            <objects>
+                <navigationController id="9Dj-jg-2nr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PYe-fg-vZh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f9m-wh-aOQ" kind="relationship" relationship="rootViewController" id="U6q-ap-jaD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QxQ-5i-0g8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-57" y="-1329"/>
         </scene>
     </scenes>
     <resources>
@@ -584,6 +678,12 @@
                 <relationship kind="action" name="dailyReviewNumberChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="numberSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="showNumberLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LookUpHistoryViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LookUpHistoryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelClicked:"/>
             </relationships>
         </class>
         <class className="NewWordBookViewController" superclassName="CoreDataTableViewController">

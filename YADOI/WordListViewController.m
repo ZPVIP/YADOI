@@ -144,6 +144,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     if ([self.filteredObjects count] != 0) {
         WordDetailViewController *wordDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WordDetailViewController"];
         wordDetailViewController.theWordEntity = [self.filteredObjects objectAtIndex:0];
+        wordDetailViewController.recordHistory = YES;
         [self.navigationController pushViewController:wordDetailViewController animated:YES];
     }
 }
@@ -197,7 +198,27 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         }
         WordDetailViewController *detailVC = segue.destinationViewController;
         detailVC.theWordEntity = wordEntity;
+        detailVC.recordHistory = YES;
+    } else if ([segue.identifier isEqualToString:@"showLookUpHistory"]) {
+        UINavigationController *destinationNVC = segue.destinationViewController;
+        LookUpHistoryViewController *lookUpVC = (LookUpHistoryViewController *)destinationNVC.topViewController;
+        lookUpVC.managedObjectContext = self.managedObjectContext;
+        lookUpVC.delegate = self;
     }
 }
 
+#pragma mark -
+#pragma makr LookUpHistoryDelegate
+- (void)lookUpHistoryViewControllerCancelClicked:(LookUpHistoryViewController *)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+- (void)lookUpHistoryViewController:(LookUpHistoryViewController *)sender selectWord:(WordEntity *)wordEntity
+{
+    [self dismissModalViewControllerAnimated:YES];
+    WordDetailViewController *wordDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"WordDetailViewController"];
+    wordDetailVC.theWordEntity = wordEntity;
+    wordDetailVC.recordHistory = YES;
+    [self.navigationController pushViewController:wordDetailVC animated:NO];
+}
 @end

@@ -79,6 +79,10 @@
 		1CBC6298164ABABD00AC4F02 /* pronouncing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBC6294164ABABD00AC4F02 /* pronouncing@2x.png */; };
 		1CBC6299164ABABD00AC4F02 /* voice_query.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBC6295164ABABD00AC4F02 /* voice_query.png */; };
 		1CBC629A164ABABD00AC4F02 /* voice_query@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBC6296164ABABD00AC4F02 /* voice_query@2x.png */; };
+		1CBC629E164AC8D400AC4F02 /* LookUpHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBC629D164AC8D300AC4F02 /* LookUpHistoryViewController.m */; };
+		1CBC629F164AC8D400AC4F02 /* LookUpHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBC629D164AC8D300AC4F02 /* LookUpHistoryViewController.m */; };
+		1CBC62A2164ACADE00AC4F02 /* LookUpHistory+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBC62A1164ACADE00AC4F02 /* LookUpHistory+Utility.m */; };
+		1CBC62A3164ACADE00AC4F02 /* LookUpHistory+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBC62A1164ACADE00AC4F02 /* LookUpHistory+Utility.m */; };
 		1CECF8A8164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8A9164450E900D9FD2F /* icon_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */; };
 		1CECF8AA164450E900D9FD2F /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CECF8A7164450E900D9FD2F /* icon_settings.png */; };
@@ -205,6 +209,10 @@
 		1CBC6294164ABABD00AC4F02 /* pronouncing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pronouncing@2x.png"; sourceTree = "<group>"; };
 		1CBC6295164ABABD00AC4F02 /* voice_query.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice_query.png; sourceTree = "<group>"; };
 		1CBC6296164ABABD00AC4F02 /* voice_query@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice_query@2x.png"; sourceTree = "<group>"; };
+		1CBC629C164AC8D300AC4F02 /* LookUpHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookUpHistoryViewController.h; sourceTree = "<group>"; };
+		1CBC629D164AC8D300AC4F02 /* LookUpHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookUpHistoryViewController.m; sourceTree = "<group>"; };
+		1CBC62A0164ACADE00AC4F02 /* LookUpHistory+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LookUpHistory+Utility.h"; sourceTree = "<group>"; };
+		1CBC62A1164ACADE00AC4F02 /* LookUpHistory+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LookUpHistory+Utility.m"; sourceTree = "<group>"; };
 		1CECF8A6164450E900D9FD2F /* icon_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_settings@2x.png"; sourceTree = "<group>"; };
 		1CECF8A7164450E900D9FD2F /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_settings.png; sourceTree = "<group>"; };
 		1CECF93C16457E8000D9FD2F /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -352,6 +360,8 @@
 				1CECF9C216464C5E00D9FD2F /* WordSampleSentence.m */,
 				1C3A8C94163D4FE100C893CA /* WordSampleSentence+Utility.h */,
 				1C3A8C95163D4FE100C893CA /* WordSampleSentence+Utility.m */,
+				1CBC62A0164ACADE00AC4F02 /* LookUpHistory+Utility.h */,
+				1CBC62A1164ACADE00AC4F02 /* LookUpHistory+Utility.m */,
 				1C0403E11642D53B00F0B254 /* NewWord+Utility.h */,
 				1C0403E21642D53B00F0B254 /* NewWord+Utility.m */,
 				1C3A8C96163D4FE100C893CA /* WordExplain+Utility.h */,
@@ -470,6 +480,8 @@
 				1C4DA884164672AC00EA07AF /* SettingsViewController.m */,
 				1C4DA889164697AC00EA07AF /* DailyReviewWordNumberViewController.h */,
 				1C4DA88A164697AC00EA07AF /* DailyReviewWordNumberViewController.m */,
+				1CBC629C164AC8D300AC4F02 /* LookUpHistoryViewController.h */,
+				1CBC629D164AC8D300AC4F02 /* LookUpHistoryViewController.m */,
 				1C4DA8881646740500EA07AF /* SettingsKey.h */,
 				1C3A8DAA163E979100C893CA /* MainStoryboard.storyboard */,
 				1CEF6FBA163C19DE00D31F32 /* Supporting Files */,
@@ -716,6 +728,8 @@
 				1CECF9D316464C6400D9FD2F /* LookUpHistory.m in Sources */,
 				1C4DA885164672AC00EA07AF /* SettingsViewController.m in Sources */,
 				1C4DA88B164697AD00EA07AF /* DailyReviewWordNumberViewController.m in Sources */,
+				1CBC629E164AC8D400AC4F02 /* LookUpHistoryViewController.m in Sources */,
+				1CBC62A2164ACADE00AC4F02 /* LookUpHistory+Utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +765,8 @@
 				1CECF9D416464C6400D9FD2F /* LookUpHistory.m in Sources */,
 				1C4DA886164672AC00EA07AF /* SettingsViewController.m in Sources */,
 				1C4DA88C164697AD00EA07AF /* DailyReviewWordNumberViewController.m in Sources */,
+				1CBC629F164AC8D400AC4F02 /* LookUpHistoryViewController.m in Sources */,
+				1CBC62A3164ACADE00AC4F02 /* LookUpHistory+Utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

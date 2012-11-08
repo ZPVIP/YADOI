@@ -11,6 +11,7 @@
 #import "WordSampleSentence+Utility.h"
 #import "NewWord.h"
 #import "ASIHTTPRequest.h"
+#import "LookUpHistory+Utility.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -318,5 +319,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
     
     return localDic;
+}
+
+- (void)addToLookUpHistory
+{
+    [LookUpHistory addWordToLookUpHistory:self];
+}
+
+- (BOOL)IsInLookUpHistory
+{
+    return [LookUpHistory isThisWordInLookUpHistory:self];
 }
 @end

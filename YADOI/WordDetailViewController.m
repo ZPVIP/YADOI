@@ -16,6 +16,7 @@
 #import "ASIHTTPRequestDelegate.h"
 #import "ASIDownloadCache.h"
 #import "Reachability.h"
+#import "LookUpHistory+Utility.h"
 #import "DDLog.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -38,11 +39,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self configureView];
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view
+    // 根据不同情况，添加到历史记录中
+    if (self.recordHistory) {
+        [self.theWordEntity addToLookUpHistory];
+    }
 }
 
 - (void)configureView

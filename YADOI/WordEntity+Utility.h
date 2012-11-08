@@ -36,6 +36,10 @@
 - (void)addToTheNewWordBook;
 // 将自己从单词本中删除
 - (void)removeFromWordBook;
+// 判断是否在历史记录中
+- (BOOL)IsInLookUpHistory;
+// 将自己加入到历史记录中
+- (void)addToLookUpHistory;
 // 单词发音地址
 + (NSURL *)ttsURLForWord: (NSString*)word;
 // 用给定的字符串从网络取词,如果存在就加入到数据库中。

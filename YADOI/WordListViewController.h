@@ -7,7 +7,8 @@
 //
 
 #import "CoreDataInsetTableViewController.h"
+#import "LookUpHistoryViewController.h"
 
-@interface WordListViewController : CoreDataInsetTableViewController<UISearchBarDelegate, UISearchDisplayDelegate>
+@interface WordListViewController : CoreDataInsetTableViewController<UISearchBarDelegate, UISearchDisplayDelegate, LookUpHistoryViewControllerDelegate>
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @end
