@@ -100,6 +100,7 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
 }
 
 - (void)testQuery
