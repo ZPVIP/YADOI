@@ -58,6 +58,11 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     NewWordBookViewController *wordBookVC = (NewWordBookViewController *)wordBookNVC.topViewController;
     wordBookVC.managedObjectContext = self.managedObjectContext;
     
+    // 消息推送
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+            (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    
+    
     return YES;
 }
 							
@@ -96,6 +101,24 @@ const static int ddLogLevel = LOG_LEVEL_VERBOSE;
     DDLogVerbose(@"firstLaunch设置成NO");
 }
 
+#pragma mark -
+#pragma makr Push Notifications
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    DDLogVerbose(@"My device token is %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    DDLogError(@"Failed to get token %@, %@", [error localizedDescription], [error localizedFailureReason]);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    for (id key in userInfo) {
+        DDLogVerbose(@"key:%@, value:%@", key, [userInfo valueForKey:key]);
+    }
+}
 - (void)setupDDLog
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
